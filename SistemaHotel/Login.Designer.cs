@@ -98,7 +98,6 @@
             this.KeyPreview = true;
             this.Name = "FrmLogin";
             this.Text = "Login";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
             this.Resize += new System.EventHandler(this.FrmLogin_Resize);

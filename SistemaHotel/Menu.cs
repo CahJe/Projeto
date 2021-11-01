@@ -173,8 +173,11 @@ namespace SistemaHotel
         }
 
         private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
+        {            
+            this.Hide();
+            FrmLogin form = new FrmLogin();
+            form.Closed += (s, args) => this.Close();
+            form.Show();
         }
 
         private void FrmMenu_Load(object sender, EventArgs e)
@@ -765,6 +768,11 @@ namespace SistemaHotel
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlRight_Paint(object sender, PaintEventArgs e)
         {
 
         }
