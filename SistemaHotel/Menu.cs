@@ -52,37 +52,37 @@ namespace SistemaHotel
 
         private void FormatarDGCheckIn()
         {
-            grid.Columns[0].HeaderText = "ID";
-            grid.Columns[1].HeaderText = "Quarto";
-            grid.Columns[2].HeaderText = "Data Entrada";
-            grid.Columns[3].HeaderText = "Data Saída";
-            grid.Columns[4].HeaderText = "Dias";
-            grid.Columns[5].HeaderText = "Valor";
-            grid.Columns[6].HeaderText = "Nome";
-            grid.Columns[7].HeaderText = "Telefone";
-            grid.Columns[8].HeaderText = "Data";
-            grid.Columns[9].HeaderText = "Funcionario";
-            grid.Columns[10].HeaderText = "Status";
-            grid.Columns[11].HeaderText = "Check-In";
+            //grid.Columns[0].HeaderText = "ID";
+            //grid.Columns[1].HeaderText = "Quarto";
+            //grid.Columns[2].HeaderText = "Data Entrada";
+            //grid.Columns[3].HeaderText = "Data Saída";
+            //grid.Columns[4].HeaderText = "Dias";
+            //grid.Columns[5].HeaderText = "Valor";
+            //grid.Columns[6].HeaderText = "Nome";
+            //grid.Columns[7].HeaderText = "Telefone";
+            //grid.Columns[8].HeaderText = "Data";
+            //grid.Columns[9].HeaderText = "Funcionario";
+            //grid.Columns[10].HeaderText = "Status";
+            //grid.Columns[11].HeaderText = "Check-In";
 
-            grid.Columns[12].HeaderText = "Check-Out";
-            grid.Columns[13].HeaderText = "Pago";
+            //grid.Columns[12].HeaderText = "Check-Out";
+            //grid.Columns[13].HeaderText = "Pago";
 
-            grid.Columns[0].Visible = false;
+            //grid.Columns[0].Visible = false;
 
             
-            grid.Columns[5].Visible = false;
-            grid.Columns[8].Visible = false;
-            grid.Columns[9].Visible = false;
-            grid.Columns[10].Visible = false;
-            grid.Columns[12].Visible = false;
+            //grid.Columns[5].Visible = false;
+            //grid.Columns[8].Visible = false;
+            //grid.Columns[9].Visible = false;
+            //grid.Columns[10].Visible = false;
+            //grid.Columns[12].Visible = false;
             
 
-            grid.Columns[1].Width = 60;
-            grid.Columns[4].Width = 60;
-            grid.Columns[11].Width = 60;
-            grid.Columns[12].Width = 60;
-            grid.Columns[13].Width = 60;
+            //grid.Columns[1].Width = 60;
+            //grid.Columns[4].Width = 60;
+            //grid.Columns[11].Width = 60;
+            //grid.Columns[12].Width = 60;
+            //grid.Columns[13].Width = 60;
         }
 
         private void ListarCheckIn()
@@ -110,37 +110,37 @@ namespace SistemaHotel
 
         private void FormatarDGCheckOut()
         {
-            grid2.Columns[0].HeaderText = "ID";
-            grid2.Columns[1].HeaderText = "Quarto";
-            grid2.Columns[2].HeaderText = "Data Entrada";
-            grid2.Columns[3].HeaderText = "Data Saída";
-            grid2.Columns[4].HeaderText = "Dias";
-            grid2.Columns[5].HeaderText = "Valor";
-            grid2.Columns[6].HeaderText = "Nome";
-            grid2.Columns[7].HeaderText = "Telefone";
-            grid2.Columns[8].HeaderText = "Data";
-            grid2.Columns[9].HeaderText = "Funcionario";
-            grid2.Columns[10].HeaderText = "Status";
-            grid2.Columns[11].HeaderText = "Check-In";
+            //grid2.Columns[0].HeaderText = "ID";
+            //grid2.Columns[1].HeaderText = "Quarto";
+            //grid2.Columns[2].HeaderText = "Data Entrada";
+            //grid2.Columns[3].HeaderText = "Data Saída";
+            //grid2.Columns[4].HeaderText = "Dias";
+            //grid2.Columns[5].HeaderText = "Valor";
+            //grid2.Columns[6].HeaderText = "Nome";
+            //grid2.Columns[7].HeaderText = "Telefone";
+            //grid2.Columns[8].HeaderText = "Data";
+            //grid2.Columns[9].HeaderText = "Funcionario";
+            //grid2.Columns[10].HeaderText = "Status";
+            //grid2.Columns[11].HeaderText = "Check-In";
 
-            grid2.Columns[12].HeaderText = "Check-Out";
-            grid2.Columns[13].HeaderText = "Pago";
+            //grid2.Columns[12].HeaderText = "Check-Out";
+            //grid2.Columns[13].HeaderText = "Pago";
 
-            grid2.Columns[0].Visible = false;
+            //grid2.Columns[0].Visible = false;
 
 
-            grid2.Columns[5].Visible = false;
-            grid2.Columns[8].Visible = false;
-            grid2.Columns[9].Visible = false;
-            grid2.Columns[10].Visible = false;
-            grid2.Columns[11].Visible = false;
+            //grid2.Columns[5].Visible = false;
+            //grid2.Columns[8].Visible = false;
+            //grid2.Columns[9].Visible = false;
+            //grid2.Columns[10].Visible = false;
+            //grid2.Columns[11].Visible = false;
            
 
-            grid2.Columns[1].Width = 60;
-            grid2.Columns[4].Width = 60;
-            grid2.Columns[11].Width = 60;
-            grid2.Columns[12].Width = 60;
-            grid2.Columns[13].Width = 60;
+            //grid2.Columns[1].Width = 60;
+            //grid2.Columns[4].Width = 60;
+            //grid2.Columns[11].Width = 60;
+            //grid2.Columns[12].Width = 60;
+            //grid2.Columns[13].Width = 60;
         }
 
         private void ListarCheckOut()
@@ -579,11 +579,11 @@ namespace SistemaHotel
 
         private void Grid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnConfirmar.Enabled = true;
-            btnPago.Enabled = true;
-            id = grid.CurrentRow.Cells[0].Value.ToString();
-            pago = grid.CurrentRow.Cells[13].Value.ToString();
-            valor = grid.CurrentRow.Cells[5].Value.ToString();
+            //btnConfirmar.Enabled = true;
+            //btnPago.Enabled = true;
+            //id = grid.CurrentRow.Cells[0].Value.ToString();
+            //pago = grid.CurrentRow.Cells[13].Value.ToString();
+            //valor = grid.CurrentRow.Cells[5].Value.ToString();
         }
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
@@ -598,19 +598,19 @@ namespace SistemaHotel
                 cmd.ExecuteNonQuery();
                 con.FecharCon();
                 ListarCheckIn();
-                btnConfirmar.Enabled = false;
+                //btnConfirmar.Enabled = false;
             }
             else
             {
                 MessageBox.Show("Você precisa antes confirmar o pagamento!");
-                btnConfirmar.Enabled = false;
+                //btnConfirmar.Enabled = false;
             }
         }
 
         private void Grid2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnConfirmar2.Enabled = true;
-            id = grid2.CurrentRow.Cells[0].Value.ToString();
+            //btnConfirmar2.Enabled = true;
+            //id = grid2.CurrentRow.Cells[0].Value.ToString();
         }
 
         private void BtnConfirmar2_Click(object sender, EventArgs e)
@@ -623,7 +623,7 @@ namespace SistemaHotel
             cmd.ExecuteNonQuery();
             con.FecharCon();
             ListarCheckOut();
-            btnConfirmar2.Enabled = false;
+            //btnConfirmar2.Enabled = false;
 
 
             con.AbrirCon();
@@ -664,7 +664,7 @@ namespace SistemaHotel
 
             MessageBox.Show("Lançamento de Valor Efetuado!", "Efetuado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ListarCheckIn();
-            btnPago.Enabled = false;
+            //btnPago.Enabled = false;
         }
 
         private void LimparDadosMovimentaçõesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -755,6 +755,16 @@ namespace SistemaHotel
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
         {
 
         }

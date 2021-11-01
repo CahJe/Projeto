@@ -54,6 +54,8 @@
             this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTopo = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -95,15 +97,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.grid = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.btnConfirmar2 = new System.Windows.Forms.Button();
-            this.grid2 = new System.Windows.Forms.DataGridView();
-            this.btnPago = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnlTopo.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -112,13 +105,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -131,7 +121,7 @@
             this.MenuSair});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1337, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1334, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
@@ -329,8 +319,30 @@
             this.pnlTopo.Controls.Add(this.button3);
             this.pnlTopo.Location = new System.Drawing.Point(0, 27);
             this.pnlTopo.Name = "pnlTopo";
-            this.pnlTopo.Size = new System.Drawing.Size(1091, 75);
+            this.pnlTopo.Size = new System.Drawing.Size(1085, 104);
             this.pnlTopo.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label18.Location = new System.Drawing.Point(22, 72);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(120, 18);
+            this.label18.TabIndex = 141;
+            this.label18.Text = "Consulta reserva";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label17.Location = new System.Drawing.Point(200, 72);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 18);
+            this.label17.TabIndex = 31;
+            this.label17.Text = "Reserva";
             // 
             // button8
             // 
@@ -341,7 +353,7 @@
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(795, 4);
+            this.button8.Location = new System.Drawing.Point(1043, 3);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(25, 25);
             this.button8.TabIndex = 140;
@@ -355,7 +367,7 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(21, 4);
+            this.button4.Location = new System.Drawing.Point(47, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(70, 65);
             this.button4.TabIndex = 3;
@@ -369,7 +381,7 @@
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(237, 3);
+            this.button3.Location = new System.Drawing.Point(193, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(70, 65);
             this.button3.TabIndex = 2;
@@ -412,9 +424,9 @@
             this.pnlRight.Controls.Add(this.lblData);
             this.pnlRight.Controls.Add(this.label2);
             this.pnlRight.Controls.Add(this.lblHora);
-            this.pnlRight.Location = new System.Drawing.Point(1087, 27);
+            this.pnlRight.Location = new System.Drawing.Point(1091, 27);
             this.pnlRight.Name = "pnlRight";
-            this.pnlRight.Size = new System.Drawing.Size(250, 703);
+            this.pnlRight.Size = new System.Drawing.Size(247, 435);
             this.pnlRight.TabIndex = 2;
             // 
             // lblEstoque
@@ -768,29 +780,27 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.pictureBox7);
-            this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Location = new System.Drawing.Point(826, 27);
+            this.panel1.Location = new System.Drawing.Point(1090, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 703);
+            this.panel1.Size = new System.Drawing.Size(248, 449);
             this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(10, 502);
+            this.pictureBox8.Location = new System.Drawing.Point(590, 307);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(240, 160);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 7;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(10, 334);
+            this.pictureBox7.Location = new System.Drawing.Point(845, 307);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(240, 160);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -800,7 +810,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(10, 166);
+            this.pictureBox6.Location = new System.Drawing.Point(845, 137);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(240, 160);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -810,147 +820,26 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(10, -1);
+            this.pictureBox5.Location = new System.Drawing.Point(590, 137);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(240, 160);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
             // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfirmar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.BackgroundImage")));
-            this.btnConfirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfirmar.Enabled = false;
-            this.btnConfirmar.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmar.Location = new System.Drawing.Point(745, 360);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(25, 25);
-            this.btnConfirmar.TabIndex = 134;
-            this.btnConfirmar.UseVisualStyleBackColor = false;
-            this.btnConfirmar.Click += new System.EventHandler(this.BtnConfirmar_Click);
-            // 
-            // grid
-            // 
-            this.grid.AllowUserToAddRows = false;
-            this.grid.AllowUserToDeleteRows = false;
-            this.grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.GridColor = System.Drawing.SystemColors.Control;
-            this.grid.Location = new System.Drawing.Point(25, 154);
-            this.grid.Name = "grid";
-            this.grid.ReadOnly = true;
-            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(745, 203);
-            this.grid.TabIndex = 133;
-            this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
-            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 134);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 13);
-            this.label8.TabIndex = 135;
-            this.label8.Text = "Próximos Check-In";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(28, 407);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(103, 13);
-            this.label15.TabIndex = 138;
-            this.label15.Text = "Próximos Check-Out";
-            // 
-            // btnConfirmar2
-            // 
-            this.btnConfirmar2.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfirmar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmar2.BackgroundImage")));
-            this.btnConfirmar2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConfirmar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfirmar2.Enabled = false;
-            this.btnConfirmar2.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnConfirmar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmar2.Location = new System.Drawing.Point(745, 637);
-            this.btnConfirmar2.Name = "btnConfirmar2";
-            this.btnConfirmar2.Size = new System.Drawing.Size(25, 25);
-            this.btnConfirmar2.TabIndex = 137;
-            this.btnConfirmar2.UseVisualStyleBackColor = false;
-            this.btnConfirmar2.Click += new System.EventHandler(this.BtnConfirmar2_Click);
-            // 
-            // grid2
-            // 
-            this.grid2.AllowUserToAddRows = false;
-            this.grid2.AllowUserToDeleteRows = false;
-            this.grid2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid2.GridColor = System.Drawing.SystemColors.Control;
-            this.grid2.Location = new System.Drawing.Point(28, 427);
-            this.grid2.Name = "grid2";
-            this.grid2.ReadOnly = true;
-            this.grid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid2.Size = new System.Drawing.Size(742, 203);
-            this.grid2.TabIndex = 136;
-            this.grid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid2_CellClick);
-            // 
-            // btnPago
-            // 
-            this.btnPago.BackColor = System.Drawing.Color.Transparent;
-            this.btnPago.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPago.BackgroundImage")));
-            this.btnPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPago.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPago.FlatAppearance.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPago.Location = new System.Drawing.Point(714, 360);
-            this.btnPago.Name = "btnPago";
-            this.btnPago.Size = new System.Drawing.Size(25, 25);
-            this.btnPago.TabIndex = 139;
-            this.btnPago.UseVisualStyleBackColor = false;
-            this.btnPago.Click += new System.EventHandler(this.BtnPago_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(313, 25);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 18);
-            this.label17.TabIndex = 31;
-            this.label17.Text = "Reserva";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(97, 25);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(120, 18);
-            this.label18.TabIndex = 141;
-            this.label18.Text = "Consulta reserva";
-            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 728);
-            this.Controls.Add(this.btnPago);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.btnConfirmar2);
-            this.Controls.Add(this.grid2);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.grid);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1334, 474);
             this.Controls.Add(this.pnlRight);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopo);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -972,13 +861,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1050,13 +936,6 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button btnConfirmar;
-        private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button btnConfirmar2;
-        private System.Windows.Forms.DataGridView grid2;
-        private System.Windows.Forms.Button btnPago;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
