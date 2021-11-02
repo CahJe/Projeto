@@ -121,6 +121,15 @@
     <Compile Include="Cadastros\Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Cliente.cs" />
+    <Compile Include="Classes\Endereco.cs" />
+    <Compile Include="Classes\Estadia.cs" />
+    <Compile Include="Classes\Funcionario.cs" />
+    <Compile Include="Classes\Pessoa.cs" />
+    <Compile Include="Classes\Quarto.cs" />
+    <Compile Include="Classes\Servico.cs" />
+    <Compile Include="Classes\ServicoPrestado.cs" />
+    <Compile Include="Classes\TipoFuncionario.cs" />
     <Compile Include="Conexao.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

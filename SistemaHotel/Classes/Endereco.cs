@@ -1,12 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SistemaHotel.Classes
 {
-    class Endereco
+    public class Endereco
     {
+        int id;
+        string estado;
+        string cidade;
+        string logradouro;
+        string rua;
+        int numero;
+
+        public int Id { get => id; set => id = value; }
+        public string Estado { get => estado; set => estado = value; }
+        public string Cidade { get => cidade; set => cidade = value; }
+        public string Logradouro { get => logradouro; set => logradouro = value; }
+        public string Rua { get => rua; set => rua = value; }
+        public int Numero { get => numero; set => numero = value; }
+
+        public Endereco(int id, string estado, string cidade, string logradouro, string rua, int numero)
+        {
+            this.id = id;
+            this.estado = estado;
+            this.cidade = cidade;
+            this.logradouro = logradouro;
+            this.rua = rua;
+            this.numero = numero;
+        }
+
+        public Endereco() { }
+
+        Conexao con = new Conexao();
+        string sql;
+        SqlCommand cmd;
+        
+        public int inserir(string estado, string cidade, string rua, int numero) 
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "INSERT INTO Endereco (estado, cidade, rua, Numero) VALUES (@estado, @Cidade, @Rua, @Numero)  Select @@Identity;";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@Cidade", cidade);
+                cmd.Parameters.AddWithValue("@Rua", rua);
+                cmd.Parameters.AddWithValue("@Numero", numero);
+
+                id = cmd.ExecuteNonQuery();
+                con.FecharCon();
+
+                return Id;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Falha ao inserir endereço na base: {0}", ex);
+                throw;
+            }
+                
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,6 +20,9 @@ namespace SistemaHotel.Cadastros
         string sql;
         SqlCommand cmd;
         string id;
+        Pessoa pessoa = new Pessoa();
+        Cliente cliente = new Cliente();
+        Endereco endereco = new Endereco();
 
         string cpfAntigo;
 
@@ -90,7 +95,6 @@ namespace SistemaHotel.Cadastros
             da.Fill(dt);
             grid.DataSource = dt;
             con.FecharCon();
-
             FormatarDG();
         }
 
@@ -171,6 +175,14 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
+            if (txtEmail.Text.ToString().Trim() == "")
+            {
+                txtEmail.Text = "";
+                MessageBox.Show("Preencha o Email", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtEmail.Focus();
+                return;
+            }
+
             if (txtCPF.Text == "   .   .   -")
             {
                 MessageBox.Show("Preencha o CPF", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -178,39 +190,22 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
-
-            //CÓDIGO DO BOTÃO PARA SALVAR
-            con.AbrirCon();
-            sql = "INSERT INTO hospedes (nome, cpf, endereco, telefone, funcionario, data) VALUES (@nome, @cpf, @endereco, @telefone, @funcionario, curDate())";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-            cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);
-            cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
-            cmd.Parameters.AddWithValue("@funcionario", Program.nomeUsuario);
-
-
             //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
-            SqlCommand cmdVerificar;
 
-            cmdVerificar = new SqlCommand("SELECT * FROM hospedes where cpf = @cpf", con.con);
-            cmdVerificar.Parameters.AddWithValue("@cpf", txtCPF.Text);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmdVerificar;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+            if (cliente.verificaExistencia(txtCPF.Text))
             {
                 MessageBox.Show("CPF já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCPF.Text = "";
                 txtCPF.Focus();
                 return;
             }
+            
+            //CÓDIGO DO BOTÃO PARA SALVAR    
 
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
+            var enderecoId = endereco.inserir(txtEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
+            var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTeledone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId);
+            cliente.inserir(pessoaId);
+        
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnSalvar.Enabled = false;
