@@ -90,7 +90,7 @@ namespace SistemaHotel.Classes
             return ddd;
         }
 
-        public string retornaTeledone(string telefone)
+        public string retornaTelefone(string telefone)
         {
             // Remove qualquer caracter que não seja numérico
             var numero = Regex.Replace(telefone, "[^0-9]+$", "");

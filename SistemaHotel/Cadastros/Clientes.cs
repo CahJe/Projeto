@@ -202,7 +202,7 @@ namespace SistemaHotel.Cadastros
             
             //CÓDIGO DO BOTÃO PARA SALVAR    
 
-            var enderecoId = endereco.inserir(txtEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
+            var enderecoId = endereco.inserir(cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
             var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId);
             cliente.inserir(pessoaId);
         
@@ -266,8 +266,6 @@ namespace SistemaHotel.Cadastros
                 }
 
             }
-
-
 
             cmd.ExecuteNonQuery();
             con.FecharCon();
