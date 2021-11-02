@@ -203,7 +203,7 @@ namespace SistemaHotel.Cadastros
             //CÓDIGO DO BOTÃO PARA SALVAR    
 
             var enderecoId = endereco.inserir(txtEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
-            var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTeledone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId);
+            var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId);
             cliente.inserir(pessoaId);
         
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
