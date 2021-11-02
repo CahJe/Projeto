@@ -43,8 +43,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha ao inserir cliente na base: {0}", ex);
-                throw;
+                throw new Exception("Falha ao inserir cliente na base -> Servidor SQL Erro: " + ex);
             }
         }     
 
@@ -85,8 +84,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha de conexão com a base: {0}", ex);
-                throw;
+                throw new Exception("Servidor SQL Erro: " + ex);
 
             }
         }
@@ -111,9 +109,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha de conexão com a base: {0}", ex);
-                throw;
-
+                throw new Exception("Servidor SQL Erro: " + ex);
             }
         }
 
@@ -136,9 +132,8 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha de conexão com a base: {0}", ex);
-                throw;
 
+                throw new Exception("Servidor SQL Erro: " + ex);                
             }
         }
     }

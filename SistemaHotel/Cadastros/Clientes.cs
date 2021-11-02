@@ -20,6 +20,7 @@ namespace SistemaHotel.Cadastros
         string sql;
         SqlCommand cmd;
         string id;
+        
         Pessoa pessoa = new Pessoa();
         Cliente cliente = new Cliente();
         Endereco endereco = new Endereco();

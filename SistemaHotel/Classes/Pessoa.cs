@@ -75,8 +75,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Falha ao inserir pessoa na base: {0}", ex);
-                throw;
+                throw new Exception("Falha ao inserir pessoa na base -> Servidor SQL Erro: " + ex);
             }
         }
 
