@@ -35,47 +35,36 @@ namespace SistemaHotel.Cadastros
        
         private void FormatarDG()
         {
-            grid.Columns[0].HeaderText = "ID";
+            grid.Columns[0].HeaderText = "DataCriacao";
             grid.Columns[1].HeaderText = "Nome";
             grid.Columns[2].HeaderText = "CPF";
-            grid.Columns[3].HeaderText = "Endereço";
+            grid.Columns[3].HeaderText = "Sexo"; 
             grid.Columns[4].HeaderText = "Telefone";
-            grid.Columns[5].HeaderText = "Funcionário";
-            grid.Columns[6].HeaderText = "Data";
+            grid.Columns[5].HeaderText = "DDD";
+            grid.Columns[6].HeaderText = "Email";
+            grid.Columns[7].HeaderText = "Estado";
+            grid.Columns[8].HeaderText = "Cidade";
+            grid.Columns[9].HeaderText = "Rua";
+            grid.Columns[10].HeaderText = "Numero";
 
-            grid.Columns[0].Visible = false;
-            grid.Columns[5].Visible = false;
+            //grid.Columns[0].Visible = false;
+            //grid.Columns[5].Visible = false;
 
-            //grid.Columns[1].Width = 200;
+            grid.Columns[1].Width = 200;
         }
 
         private void Listar()
         {
-
-            con.AbrirCon();
-            sql = "SELECT * FROM hospedes order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = cliente.ListaCliente(); 
             grid.DataSource = dt;
-            con.FecharCon();
-
+            
             FormatarDG();
         }
 
 
         private void BuscarNome()
         {
-            con.AbrirCon();
-            sql = "SELECT * FROM hospedes where nome LIKE @nome order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtBuscarNome.Text + "%");
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = cliente.buscaCPF(txtBuscarNome.Text);
             grid.DataSource = dt;
             con.FecharCon();
 
@@ -85,16 +74,8 @@ namespace SistemaHotel.Cadastros
 
         private void BuscarCPF()
         {
-            con.AbrirCon();
-            sql = "SELECT * FROM hospedes where cpf = @cpf order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@cpf", txtBuscarCPF.Text);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            grid.DataSource = dt;
-            con.FecharCon();
+            var dt = cliente.buscaCPF(txtBuscarCPF.Text);         
+            grid.DataSource = dt;           
             FormatarDG();
         }
 

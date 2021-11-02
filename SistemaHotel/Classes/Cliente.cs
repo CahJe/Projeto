@@ -65,5 +65,81 @@ namespace SistemaHotel.Classes
 
             return false;
         }
+
+        public DataTable buscaCPF(string cpf) 
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "SELECT convert(varchar, p.DataCriacao, 103) DataCriacao, p.CPF, p.Nome,p.Sexo, p.Telefone,p.DDD,p.Email, ed.Estado, ed.Cidade, ed.Rua, ed.Numero FROM Pessoa p (nolock) JOIN Cliente c (nolock) on c.PessoaId = p.Id JOIN Endereco ed (nolock)on p.EnderecoId = ed.Id WHERE p.CPF = @cpf";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@cpf", cpf);
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                con.FecharCon();
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Falha de conexão com a base: {0}", ex);
+                throw;
+
+            }
+        }
+
+
+        public DataTable buscaNome(string nome)
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "SELECT convert(varchar, p.DataCriacao, 103) DataCriacao, p.CPF, p.Nome,p.Sexo, p.Telefone,p.DDD,p.Email, ed.Estado, ed.Cidade, ed.Rua, ed.Numero FROM Pessoa p (nolock) JOIN Cliente c (nolock) on c.PessoaId = p.Id JOIN Endereco ed (nolock)on p.EnderecoId = ed.Id where p.nome LIKE @nome";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@nome", nome + "%");
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                con.FecharCon();
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Falha de conexão com a base: {0}", ex);
+                throw;
+
+            }
+        }
+
+
+        public DataTable ListaCliente()
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "SELECT convert(varchar, p.DataCriacao, 103) DataCriacao, p.CPF, p.Nome,p.Sexo, p.Telefone,p.DDD,p.Email, ed.Estado, ed.Cidade, ed.Rua, ed.Numero FROM Pessoa p (nolock) JOIN Cliente c (nolock) on c.PessoaId = p.Id JOIN Endereco ed (nolock)on p.EnderecoId = ed.Id Order by nome desc";
+                cmd = new SqlCommand(sql, con.con);
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                con.FecharCon();
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Falha de conexão com a base: {0}", ex);
+                throw;
+
+            }
+        }
     }
 }
