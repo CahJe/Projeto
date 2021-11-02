@@ -672,10 +672,6 @@ C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.csproj.Gen
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.csproj.CoreCompileInputs.cache
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.exe
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.pdb
-C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SistemaHotel.exe.config
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SistemaHotel.exe
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\bin\Debug\SistemaHotel.pdb
