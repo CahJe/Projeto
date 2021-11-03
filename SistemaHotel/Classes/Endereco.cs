@@ -63,5 +63,29 @@ namespace SistemaHotel.Classes
                 
         }
 
+        public void alterar(int enderecoId, string estado, string cidade, string rua, int numero)
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "UPDATE Endereco SET estado = @estado, cidade = @Cidade, rua = @Rua, Numero = @Numero WHERE Id = @EnderecoId";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@EnderecoId", enderecoId);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@Cidade", cidade);
+                cmd.Parameters.AddWithValue("@Rua", rua);
+                cmd.Parameters.AddWithValue("@Numero", numero);
+
+                cmd.ExecuteNonQuery();
+                con.FecharCon();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao inserir pessoa na base -> Servidor SQL Erro: " + ex);
+            }
+        }
+
+
     }
 }

@@ -108,6 +108,7 @@
             this.grid.Size = new System.Drawing.Size(530, 142);
             this.grid.TabIndex = 80;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
+            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentDoubleClick);
             // 
             // txtTelefone

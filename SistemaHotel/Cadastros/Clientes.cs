@@ -206,52 +206,20 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
-            if (txtCPF.Text == "   .   .   -")
+            if (txtEmail.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Preencha o CPF", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCPF.Focus();
+                txtEmail.Text = "";
+                MessageBox.Show("Preencha o Email", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtEmail.Focus();
                 return;
             }
 
-
             //CÓDIGO DO BOTÃO PARA EDITAR
-            con.AbrirCon();
-            sql = "UPDATE hospedes SET nome = @nome, cpf = @cpf, endereco = @endereco, telefone = @telefone, funcionario = @funcionario where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-            cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);
-            cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
-            cmd.Parameters.AddWithValue("@funcionario", Program.nomeUsuario);
-            cmd.Parameters.AddWithValue("@id", id);
 
-
-
-            //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
-
-            if (txtCPF.Text != cpfAntigo)
-            {
-                SqlCommand cmdVerificar;
-
-                cmdVerificar = new SqlCommand("SELECT * FROM hospedes where cpf = @cpf", con.con);
-                cmdVerificar.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmdVerificar;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    MessageBox.Show("CPF já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCPF.Text = "";
-                    txtCPF.Focus();
-                    return;
-                }
-
-            }
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
+            pessoa.retornaPessoa(txtCPF.Text);
+            endereco.alterar(pessoa.EnderecoId, cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
+            pessoa.alterar(pessoa.Id, txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text);
+                                                                   
             MessageBox.Show("Registro Editado com Sucesso!", "Dados Editados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnEditar.Enabled = false;
@@ -328,6 +296,11 @@ namespace SistemaHotel.Cadastros
                
                 Close();
             }
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -136,5 +136,29 @@ namespace SistemaHotel.Classes
                 throw new Exception("Servidor SQL Erro: " + ex);                
             }
         }
+
+        public int retornaId(string cpf)
+        {
+
+            try
+            {
+                con.AbrirCon();
+                sql = "SELECT Id FROM Pessoa WHERE Cpf = @cpf";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@Cpf", cpf);
+
+                PessoaId = cmd.ExecuteNonQuery();
+                con.FecharCon();
+
+                return PessoaId;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao inserir cliente na base -> Servidor SQL Erro: " + ex);
+            }
+
+
+        }
+
     }
 }

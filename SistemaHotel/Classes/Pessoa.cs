@@ -20,7 +20,7 @@ namespace SistemaHotel.Classes
         string email;
         string senha;
         int enderecoId;
-        
+
         public int Id { get => id; set => id = value; }
         public DateTime DataCriacao { get => dataCriacao; set => dataCriacao = value; }
         public string Cpf { get => cpf; set => cpf = value; }
@@ -79,6 +79,32 @@ namespace SistemaHotel.Classes
             }
         }
 
+
+        public void alterar(int pessoaId, string cpf, string nome, string sexo, string telefone, string ddd, string email, string senha = null)
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "UPDATE Pessoa SET Nome = @Nome, Sexo = @Sexo, Telefone = @Telefone, DDD = @DDD, Email = @Email, Senha = @Senha WHERE Id = @PessoaId";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@PessoaId", pessoaId);
+                cmd.Parameters.AddWithValue("@Nome", nome);
+                cmd.Parameters.AddWithValue("@Sexo", sexo);
+                cmd.Parameters.AddWithValue("@Telefone", telefone);
+                cmd.Parameters.AddWithValue("@DDD", ddd);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Senha", senha);
+
+                cmd.ExecuteNonQuery();
+                con.FecharCon();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao inserir pessoa na base -> Servidor SQL Erro: " + ex);
+            }
+        }
+
         public string retornaDDD(string telefone)
         {
             // Remove qualquer caracter que não seja numérico
@@ -99,5 +125,36 @@ namespace SistemaHotel.Classes
             return tel;
         }
 
+        public void retornaPessoa(string cpf)
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = "SELECT Id, Cpf, Nome, sexo, Telefone, DDD, Email, Senha, EnderecoId FROM Pessoa WHERE Cpf = @cpf";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@Cpf", cpf);
+
+                var dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    this.id = dr.GetInt32(0);
+                    this.Cpf = dr.GetString(1);
+                    this.Nome = dr.GetString(2);
+                    this.Sexo = dr.GetString(3);
+                    this.Telefone = dr.GetString(4);
+                    this.Ddd = dr.GetString(5);
+                    this.Email = dr.GetString(6);
+                    this.Senha = dr.GetString(7);
+                    this.EnderecoId = dr.GetInt32(8);
+                }
+
+                con.FecharCon();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao inserir cliente na base -> Servidor SQL Erro: " + ex);
+            }
+
+        }
     }
 }
