@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace SistemaHotel.Classes
 {
-    public class Cliente
+    public class Cliente : Pessoa
     {
         int id;
         int pessoaId;
