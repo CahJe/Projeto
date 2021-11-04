@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace SistemaHotel.Cadastros
         string sql;
         SqlCommand cmd;
         string id;
+        TipoFuncionario tipoFuncionario = new TipoFuncionario();
 
         public FrmCargo()
         {
@@ -28,7 +30,7 @@ namespace SistemaHotel.Cadastros
         private void FormatarDG()
         {
             grid.Columns[0].HeaderText = "ID";
-            grid.Columns[1].HeaderText = "Cargo";
+            grid.Columns[1].HeaderText = "Descricao";
 
             grid.Columns[0].Visible = false;
 
@@ -37,14 +39,8 @@ namespace SistemaHotel.Cadastros
 
         private void Listar()
         {
-            
-            con.AbrirCon();
-            sql = "SELECT * FROM cargos order by cargo asc";
-            cmd = new SqlCommand(sql, con.con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+
+            var dt = tipoFuncionario.ListaTipo();
             grid.DataSource = dt;
             con.FecharCon();
 
@@ -72,12 +68,8 @@ namespace SistemaHotel.Cadastros
             }
 
             //PROGRAMANDO O BOTÃO SALVAR
-            con.AbrirCon();
-            sql = "INSERT INTO cargos (cargo) VALUES (@cargo)";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@cargo", txtNome.Text);
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
+
+            tipoFuncionario.inserir(txtNome.Text);
 
             MessageBox.Show("Registro Salvo com Sucesso", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
@@ -107,15 +99,9 @@ namespace SistemaHotel.Cadastros
 
 
             //CÓDIGO DO BOTÃO PARA EDITAR
-            
-            con.AbrirCon();
-            sql = "UPDATE cargos SET cargo = @cargo where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@cargo", txtNome.Text);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
 
+            tipoFuncionario.alterar(int.Parse(id), txtNome.Text);
+          
             MessageBox.Show("Registro Editado com Sucesso!", "Dados Editados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnEditar.Enabled = false;
@@ -131,13 +117,8 @@ namespace SistemaHotel.Cadastros
             if (resultado == DialogResult.Yes)
             {
                 //CÓDIGO DO BOTÃO PARA EXCLUIR
-                con.AbrirCon();
-                sql = "DELETE FROM cargos where id = @id";
-                cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                con.FecharCon();
 
+                tipoFuncionario.deletar(int.Parse(id));
                 MessageBox.Show("Registro Excluido com Sucesso!", "Registro Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnNovo.Enabled = true;
                 btnEditar.Enabled = false;
@@ -159,6 +140,11 @@ namespace SistemaHotel.Cadastros
 
             id = grid.CurrentRow.Cells[0].Value.ToString();
             txtNome.Text = grid.CurrentRow.Cells[1].Value.ToString();
+
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

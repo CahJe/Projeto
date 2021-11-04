@@ -302,5 +302,10 @@ namespace SistemaHotel.Cadastros
         {
 
         }
+
+        private void txtBuscarCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

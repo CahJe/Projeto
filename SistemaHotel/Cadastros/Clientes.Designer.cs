@@ -92,6 +92,7 @@
             this.txtBuscarCPF.Size = new System.Drawing.Size(115, 20);
             this.txtBuscarCPF.TabIndex = 81;
             this.txtBuscarCPF.Visible = false;
+            this.txtBuscarCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtBuscarCPF_MaskInputRejected);
             this.txtBuscarCPF.TextChanged += new System.EventHandler(this.TxtBuscarCPF_TextChanged);
             // 
             // grid

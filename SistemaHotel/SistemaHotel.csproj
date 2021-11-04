@@ -234,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconfinder_16_2300992.ico" />
+    <Content Include="ScriptBanco\Script.txt" />
     <None Include="Resources\baixo.png" />
     <None Include="Resources\bom.png" />
   </ItemGroup>
