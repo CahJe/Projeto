@@ -36,19 +36,20 @@ namespace SistemaHotel.Cadastros
        
         private void FormatarDG()
         {
-            grid.Columns[0].HeaderText = "DataCriacao";
-            grid.Columns[1].HeaderText = "Nome";
-            grid.Columns[2].HeaderText = "CPF";
-            grid.Columns[3].HeaderText = "Sexo"; 
-            grid.Columns[4].HeaderText = "Telefone";
-            grid.Columns[5].HeaderText = "DDD";
-            grid.Columns[6].HeaderText = "Email";
-            grid.Columns[7].HeaderText = "Estado";
-            grid.Columns[8].HeaderText = "Cidade";
-            grid.Columns[9].HeaderText = "Rua";
-            grid.Columns[10].HeaderText = "Numero";
+            grid.Columns[0].HeaderText = "Id";
+            grid.Columns[1].HeaderText = "DataCriacao";
+            grid.Columns[2].HeaderText = "Nome";
+            grid.Columns[3].HeaderText = "CPF";
+            grid.Columns[4].HeaderText = "Sexo"; 
+            grid.Columns[5].HeaderText = "Telefone";
+            grid.Columns[6].HeaderText = "DDD";
+            grid.Columns[7].HeaderText = "Email";
+            grid.Columns[8].HeaderText = "Estado";
+            grid.Columns[9].HeaderText = "Cidade";
+            grid.Columns[10].HeaderText = "Rua";
+            grid.Columns[11].HeaderText = "Numero";
 
-            //grid.Columns[0].Visible = false;
+            grid.Columns[0].Visible = false;
             //grid.Columns[5].Visible = false;
 
             grid.Columns[1].Width = 200;

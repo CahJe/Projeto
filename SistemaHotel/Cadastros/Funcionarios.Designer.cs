@@ -61,6 +61,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtConfirmaSenha = new System.Windows.Forms.TextBox();
+            this.cbSexo = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +113,7 @@
             // txtEndereco
             // 
             this.txtEndereco.Enabled = false;
-            this.txtEndereco.Location = new System.Drawing.Point(63, 92);
+            this.txtEndereco.Location = new System.Drawing.Point(63, 125);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(172, 20);
             this.txtEndereco.TabIndex = 3;
@@ -120,7 +122,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 96);
+            this.label4.Location = new System.Drawing.Point(5, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 55;
@@ -147,7 +149,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(521, 59);
+            this.label6.Location = new System.Drawing.Point(21, 94);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 58;
@@ -157,10 +159,11 @@
             // 
             this.cbCargo.Enabled = false;
             this.cbCargo.FormattingEnabled = true;
-            this.cbCargo.Location = new System.Drawing.Point(563, 54);
+            this.cbCargo.Location = new System.Drawing.Point(63, 89);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(112, 21);
             this.cbCargo.TabIndex = 5;
+            this.cbCargo.SelectedIndexChanged += new System.EventHandler(this.cbCargo_SelectedIndexChanged);
             // 
             // grid
             // 
@@ -169,11 +172,11 @@
             this.grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.GridColor = System.Drawing.SystemColors.Control;
-            this.grid.Location = new System.Drawing.Point(22, 166);
+            this.grid.Location = new System.Drawing.Point(22, 198);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(636, 186);
+            this.grid.Size = new System.Drawing.Size(636, 154);
             this.grid.TabIndex = 60;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
             this.grid.Click += new System.EventHandler(this.Grid_Click);
@@ -273,7 +276,7 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(288, 90);
+            this.txtNumero.Location = new System.Drawing.Point(288, 123);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(46, 20);
             this.txtNumero.TabIndex = 68;
@@ -281,7 +284,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(241, 93);
+            this.label7.Location = new System.Drawing.Point(241, 126);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 69;
@@ -327,7 +330,7 @@
             "SP",
             "SE",
             "TO"});
-            this.cbEstado.Location = new System.Drawing.Point(549, 88);
+            this.cbEstado.Location = new System.Drawing.Point(549, 121);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(56, 21);
             this.cbEstado.TabIndex = 70;
@@ -335,7 +338,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(505, 92);
+            this.label8.Location = new System.Drawing.Point(505, 125);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 71;
@@ -343,7 +346,7 @@
             // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(392, 89);
+            this.txtCidade.Location = new System.Drawing.Point(392, 122);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(100, 20);
             this.txtCidade.TabIndex = 72;
@@ -351,7 +354,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(347, 92);
+            this.label9.Location = new System.Drawing.Point(347, 125);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 73;
@@ -360,7 +363,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(246, 130);
+            this.label10.Location = new System.Drawing.Point(263, 164);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 74;
@@ -369,7 +372,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(440, 130);
+            this.label11.Location = new System.Drawing.Point(440, 163);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 13);
             this.label11.TabIndex = 75;
@@ -378,7 +381,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(26, 129);
+            this.label12.Location = new System.Drawing.Point(26, 162);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 76;
@@ -386,24 +389,46 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(63, 126);
+            this.txtEmail.Location = new System.Drawing.Point(63, 159);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(172, 20);
             this.txtEmail.TabIndex = 77;
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(293, 126);
+            this.txtSenha.Location = new System.Drawing.Point(310, 160);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(123, 20);
             this.txtSenha.TabIndex = 78;
             // 
             // txtConfirmaSenha
             // 
-            this.txtConfirmaSenha.Location = new System.Drawing.Point(526, 127);
+            this.txtConfirmaSenha.Location = new System.Drawing.Point(526, 160);
             this.txtConfirmaSenha.Name = "txtConfirmaSenha";
             this.txtConfirmaSenha.Size = new System.Drawing.Size(122, 20);
             this.txtConfirmaSenha.TabIndex = 79;
+            // 
+            // cbSexo
+            // 
+            this.cbSexo.FormattingEnabled = true;
+            this.cbSexo.Items.AddRange(new object[] {
+            "",
+            "Masculino",
+            "Feminino",
+            "Indefinido"});
+            this.cbSexo.Location = new System.Drawing.Point(232, 86);
+            this.cbSexo.Name = "cbSexo";
+            this.cbSexo.Size = new System.Drawing.Size(102, 21);
+            this.cbSexo.TabIndex = 80;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(198, 89);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.TabIndex = 81;
+            this.label13.Text = "Sexo:";
             // 
             // FrmFuncionarios
             // 
@@ -411,6 +436,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(685, 450);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.cbSexo);
             this.Controls.Add(this.txtConfirmaSenha);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtEmail);
@@ -489,5 +516,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.TextBox txtConfirmaSenha;
+        private System.Windows.Forms.ComboBox cbSexo;
+        private System.Windows.Forms.Label label13;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,10 @@ namespace SistemaHotel.Cadastros
         string sql;
         SqlCommand cmd;
         string id;
+        TipoFuncionario tipoFuncionario = new TipoFuncionario();
+        Funcionario funcionario = new Funcionario();
+        Pessoa pessoa = new Pessoa();
+        Endereco endereco = new Endereco();
 
         string cpfAntigo;
 
@@ -29,30 +34,29 @@ namespace SistemaHotel.Cadastros
 
         private void CarregarCombobox()
         {
-            con.AbrirCon();
-            sql = "SELECT * FROM cargos order by cargo asc";
-            cmd = new SqlCommand(sql, con.con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+
+            var dt = tipoFuncionario.ListaTipo();
             cbCargo.DataSource = dt;
-            //cbCargo.ValueMember = "id";
-            cbCargo.DisplayMember = "cargo";
-            
-            con.FecharCon();
+            cbCargo.ValueMember = "id";
+            cbCargo.DisplayMember = "descricao";            
         }
 
 
         private void FormatarDG()
         {
-            grid.Columns[0].HeaderText = "ID";
-            grid.Columns[1].HeaderText = "Nome";
+            grid.Columns[0].HeaderText = "Id";
+            grid.Columns[1].HeaderText = "DataCriacao";
             grid.Columns[2].HeaderText = "CPF";
-            grid.Columns[3].HeaderText = "Endereço";
-            grid.Columns[4].HeaderText = "Telefone";
-            grid.Columns[5].HeaderText = "Cargo";
-            grid.Columns[6].HeaderText = "Data";
+            grid.Columns[3].HeaderText = "Nome";
+            grid.Columns[4].HeaderText = "Cargo";
+            grid.Columns[5].HeaderText = "sexo";
+            grid.Columns[6].HeaderText = "Telefone";
+            grid.Columns[7].HeaderText = "DDD";
+            grid.Columns[8].HeaderText = "Email";
+            grid.Columns[9].HeaderText = "Estado";
+            grid.Columns[10].HeaderText = "Cidade";
+            grid.Columns[11].HeaderText = "Rua";
+            grid.Columns[12].HeaderText = "Numero";
 
             grid.Columns[0].Visible = false;
 
@@ -62,15 +66,8 @@ namespace SistemaHotel.Cadastros
         private void Listar()
         {
 
-            con.AbrirCon();
-            sql = "SELECT * FROM Funcionario order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = funcionario.ListaFuncionario();
             grid.DataSource = dt;
-            con.FecharCon();
 
             FormatarDG();
         }
@@ -78,31 +75,16 @@ namespace SistemaHotel.Cadastros
 
         private void BuscarNome()
         {
-            con.AbrirCon();
-            sql = "SELECT * FROM Funcionario where nome LIKE @nome order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtBuscarNome.Text + "%");
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = funcionario.buscaNome(txtBuscarNome.Text);
             grid.DataSource = dt;
-            con.FecharCon();
-
+            
             FormatarDG();
         }
 
 
         private void BuscarCPF()
         {
-            con.AbrirCon();
-            sql = "SELECT * FROM Funcionario where cpf = @cpf order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@cpf", txtBuscarCPF.Text);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = funcionario.buscaCPF(txtBuscarCPF.Text);
             grid.DataSource = dt;
             con.FecharCon();
 
@@ -116,6 +98,13 @@ namespace SistemaHotel.Cadastros
             txtCPF.Enabled = true;
             txtEndereco.Enabled = true;
             cbCargo.Enabled = true;
+            cbEstado.Enabled = true;
+            cbSexo.Enabled = true;
+            txtCidade.Enabled = true;
+            txtEmail.Enabled = true;
+            txtNumero.Enabled = true;
+            txtSenha.Enabled = true;
+            txtConfirmaSenha.Enabled = true;
             txtTelefone.Enabled = true;
             txtNome.Focus();
 
@@ -138,6 +127,12 @@ namespace SistemaHotel.Cadastros
             txtCPF.Text = "";
             txtEndereco.Text = "";
             txtTelefone.Text = "";
+            txtCidade.Text = "";
+            txtEmail.Text = "";
+            txtNumero.Text = "";
+            txtSenha.Text = "";
+            txtConfirmaSenha.Text = "";
+
         }
 
 
@@ -204,36 +199,22 @@ namespace SistemaHotel.Cadastros
 
 
             //CÓDIGO DO BOTÃO PARA SALVAR
-            con.AbrirCon();
-            sql = "INSERT INTO Funcionario (nome, cpf, endereco, telefone, cargo, data) VALUES (@nome, @cpf, @endereco, @telefone, @cargo, curDate())";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-            cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);
-            cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
-            cmd.Parameters.AddWithValue("@cargo", cbCargo.Text);
+
+
+            var enderecoId = endereco.inserir(cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
+            var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId, txtConfirmaSenha.Text);
+            funcionario.inserir(int.Parse(cbCargo.ValueMember), pessoaId);
 
 
             //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
-            SqlCommand cmdVerificar;
 
-            cmdVerificar = new SqlCommand("SELECT * FROM Funcionario where cpf = @cpf", con.con);
-            cmdVerificar.Parameters.AddWithValue("@cpf", txtCPF.Text);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmdVerificar;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+            if (funcionario.verificaExistencia(txtCPF.Text))
             {
                 MessageBox.Show("CPF já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCPF.Text = "";
                 txtCPF.Focus();
                 return;
             }
-
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
 
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
@@ -266,32 +247,11 @@ namespace SistemaHotel.Cadastros
             }
 
 
-            //CÓDIGO DO BOTÃO PARA EDITAR
-            con.AbrirCon();
-            sql = "UPDATE Funcionario SET nome = @nome, cpf = @cpf, endereco = @endereco, telefone = @telefone, cargo = @cargo where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCPF.Text);
-            cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);
-            cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
-            cmd.Parameters.AddWithValue("@cargo", cbCargo.Text);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            
-            
             //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
-            
+
             if (txtCPF.Text != cpfAntigo)
             {
-                SqlCommand cmdVerificar;
-
-                cmdVerificar = new SqlCommand("SELECT * FROM Funcionario where cpf = @cpf", con.con);
-                cmdVerificar.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmdVerificar;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
+                if (funcionario.verificaExistencia(txtCPF.Text))
                 {
                     MessageBox.Show("CPF já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCPF.Text = "";
@@ -301,11 +261,13 @@ namespace SistemaHotel.Cadastros
 
             }
 
+            //CÓDIGO DO BOTÃO PARA EDITAR
 
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
+            pessoa.retornaPessoa(txtCPF.Text);
+            endereco.alterar(pessoa.EnderecoId, cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
+            pessoa.alterar(pessoa.Id, txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text);
+            funcionario.alterar(int.Parse(cbCargo.ValueMember), pessoa.Id);
+                     
             MessageBox.Show("Registro Editado com Sucesso!", "Dados Editados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnEditar.Enabled = false;
@@ -321,13 +283,8 @@ namespace SistemaHotel.Cadastros
             if (resultado == DialogResult.Yes)
             {
                 //CÓDIGO DO BOTÃO PARA EXCLUIR
-                con.AbrirCon();
-                sql = "DELETE FROM Funcionario where id = @id";
-                cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                con.FecharCon();
 
+                funcionario.deletar(int.Parse(id));
                 MessageBox.Show("Registro Excluido com Sucesso!", "Registro Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnNovo.Enabled = true;
                 btnEditar.Enabled = false;
@@ -340,22 +297,27 @@ namespace SistemaHotel.Cadastros
         }
 
         private void Grid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-
+        {            
             btnEditar.Enabled = true;
             btnExcluir.Enabled = true;
             btnSalvar.Enabled = false;
             habilitarCampos();
 
+            txtCPF.Enabled = false;
+
             id = grid.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = grid.CurrentRow.Cells[1].Value.ToString();
             txtCPF.Text = grid.CurrentRow.Cells[2].Value.ToString();
-            txtEndereco.Text = grid.CurrentRow.Cells[3].Value.ToString();
-            txtTelefone.Text = grid.CurrentRow.Cells[4].Value.ToString();
-            cbCargo.Text = grid.CurrentRow.Cells[5].Value.ToString();
-            
-            cpfAntigo = grid.CurrentRow.Cells[2].Value.ToString();
+            txtNome.Text = grid.CurrentRow.Cells[3].Value.ToString();
+            cbCargo.Text = grid.CurrentRow.Cells[4].Value.ToString();
+            cbSexo.Text = grid.CurrentRow.Cells[5].Value.ToString();
+            txtTelefone.Text = String.Concat(grid.CurrentRow.Cells[7].Value.ToString(), grid.CurrentRow.Cells[6].Value.ToString());
+            txtEmail.Text = grid.CurrentRow.Cells[8].Value.ToString();
+            cbEstado.Text = grid.CurrentRow.Cells[9].Value.ToString();
+            txtCidade.Text = grid.CurrentRow.Cells[10].Value.ToString();
+            txtEndereco.Text = grid.CurrentRow.Cells[11].Value.ToString();
+            txtNumero.Text = grid.CurrentRow.Cells[12].Value.ToString();
+
+            //cpfAntigo = grid.CurrentRow.Cells[2].Value.ToString();
         }
 
         private void TxtBuscarNome_TextChanged(object sender, EventArgs e)
@@ -377,6 +339,11 @@ namespace SistemaHotel.Cadastros
         }
 
         private void txtEndereco_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -93,6 +93,7 @@ namespace SistemaHotel.Classes
         {
             try
             {
+
                 con.AbrirCon();
                 sql = "SELECT * FROM TipoFuncionario order by Id";
                 cmd = new SqlCommand(sql, con.con);

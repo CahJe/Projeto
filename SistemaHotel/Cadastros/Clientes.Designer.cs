@@ -269,6 +269,7 @@
             // 
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Items.AddRange(new object[] {
+            "",
             "Masculino",
             "Feminino",
             "Indefinido"});
