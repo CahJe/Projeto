@@ -13,6 +13,7 @@ namespace SistemaHotel
 
         //CONEXAO COM O BANCO DE DADOS LOCAL
         public string conec = "SERVER=localhost; DATABASE=hotel; UID=root; PWD=; PORT=;";
+        // "Data Source = DESKTOP - LFU4RFH\SQLEXPRESS;Initial Catalog = Projeto login;Integrated Security = True"
 
 
         public SqlConnection con = null;

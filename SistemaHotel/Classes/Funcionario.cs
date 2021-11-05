@@ -118,7 +118,7 @@ namespace SistemaHotel.Classes
             try
             {
                 con.AbrirCon();
-                sql = "SELECT p.id, convert(varchar, p.DataCriacao, 103) as DataCriacao, p.CPF, p.Nome, tf.Descricao as Cargo,p.Sexo, p.Telefone,p.DDD,p.Email,ed.Estado, ed.Cidade, ed.Rua, ed.Numero FROM Pessoa p (nolock) JOIN Funcionario f (nolock) on f.PessoaId = p.Id JOIN Endereco ed (nolock)on p.EnderecoId = ed.Id JOIN TipoFuncionario tf (nolock) on tf.Id = f.TipoFuncionarioId Where f.DataInativacao is null Order by nome desc";
+                sql = "SELECT p.id, convert(varchar, p.DataCriacao, 103) as DataCriacao, p.CPF, p.Nome, tf.Descricao as Cargo,p.Sexo, p.Telefone,p.DDD,p.Email,ed.Estado, ed.Cidade, ed.Rua, ed.Numero, p.Senha FROM Pessoa p (nolock) JOIN Funcionario f (nolock) on f.PessoaId = p.Id JOIN Endereco ed (nolock)on p.EnderecoId = ed.Id JOIN TipoFuncionario tf (nolock) on tf.Id = f.TipoFuncionarioId Where f.DataInativacao is null Order by nome desc";
                 cmd = new SqlCommand(sql, con.con);
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;

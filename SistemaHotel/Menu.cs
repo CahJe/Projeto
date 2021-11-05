@@ -227,8 +227,7 @@ namespace SistemaHotel
 
         private void UsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cadastros.FrmUsuarios form = new Cadastros.FrmUsuarios();
-            form.Show();
+
         }
 
         private void FornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -574,7 +573,6 @@ namespace SistemaHotel
             {
                 funcionáriosToolStripMenuItem.Enabled = true;
                 quartosToolStripMenuItem.Enabled = true;
-                usuáriosToolStripMenuItem.Enabled = true;
                 serviçosToolStripMenuItem.Enabled = true;
                 cargoToolStripMenuItem.Enabled = true;
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace SistemaHotel.Cadastros
         string sql;
         SqlCommand cmd;
         string id;
+        Quarto quarto = new Quarto();
 
         string quartoAntigo;
 
@@ -62,8 +64,8 @@ namespace SistemaHotel.Cadastros
         private void habilitarCampos()
         {
             txtQuarto.Enabled = true;
-            txtValor.Enabled = true;
-            txtPessoas.Enabled = true;
+            txtAndar.Enabled = true;
+            txtOcupacao.Enabled = true;
            
         }
 
@@ -71,8 +73,8 @@ namespace SistemaHotel.Cadastros
         private void desabilitarCampos()
         {
             txtQuarto.Enabled = false;
-            txtValor.Enabled = false;
-            txtPessoas.Enabled = false;
+            txtAndar.Enabled = false;
+            txtOcupacao.Enabled = false;
             
         }
 
@@ -80,12 +82,10 @@ namespace SistemaHotel.Cadastros
         private void limparCampos()
         {
             txtQuarto.Text = "";
-            txtValor.Text = "";
-            txtPessoas.Text = "";
+            txtAndar.Text = "";
+            txtOcupacao.Text = "";
             
         }
-
-
 
 
         private void FrmQuartos_Load(object sender, EventArgs e)
@@ -112,34 +112,31 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
-            if (txtValor.Text == "   .   .   -")
+            if (txtAndar.Text == "")
             {
                 MessageBox.Show("Preencha o Valor", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtValor.Focus();
+                txtAndar.Focus();
+                return;
+            }
+            
+            if (txtOcupacao.Text == "")
+            {
+                MessageBox.Show("Preencha o Valor", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtAndar.Focus();
+                return;
+            }
+
+            if (txtDescricao.Text == "")
+            {
+                MessageBox.Show("Preencha o Valor", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtAndar.Focus();
                 return;
             }
 
 
-            //CÓDIGO DO BOTÃO PARA SALVAR
-            con.AbrirCon();
-            sql = "INSERT INTO quartos (quarto, valor, pessoas) VALUES (@quarto, @valor, @pessoas)";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@quarto", txtQuarto.Text);
-            cmd.Parameters.AddWithValue("@valor", txtValor.Text);
-            cmd.Parameters.AddWithValue("@pessoas", txtPessoas.Text);
-           
-
-
             //VERIFICAR SE O QUARTO JÁ EXISTE NO BANCO
-            SqlCommand cmdVerificar;
 
-            cmdVerificar = new SqlCommand("SELECT * FROM quartos where quarto = @quarto", con.con);
-            cmdVerificar.Parameters.AddWithValue("@quarto", txtQuarto.Text);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmdVerificar;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+            if (quarto.verificaExistencia(int.Parse(txtQuarto.Text)))
             {
                 MessageBox.Show("Quarto já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuarto.Text = "";
@@ -148,9 +145,10 @@ namespace SistemaHotel.Cadastros
             }
 
 
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
+            //CÓDIGO DO BOTÃO PARA SALVAR
 
+            quarto.inserir(int.Parse(txtQuarto.Text), int.Parse(txtAndar.Text), txtDescricao.Text, int.Parse(txtOcupacao.Text));
+          
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnSalvar.Enabled = false;
@@ -169,10 +167,10 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
-            if (txtValor.Text == "   .   .   -")
+            if (txtAndar.Text == "   .   .   -")
             {
                 MessageBox.Show("Preencha o Valor", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtValor.Focus();
+                txtAndar.Focus();
                 return;
             }
 
@@ -181,8 +179,8 @@ namespace SistemaHotel.Cadastros
             sql = "UPDATE quartos SET quarto = @quarto, valor = @valor, pessoas = @pessoas where id = @id";
             cmd = new SqlCommand(sql, con.con);
             cmd.Parameters.AddWithValue("@quarto", txtQuarto.Text);
-            cmd.Parameters.AddWithValue("@valor", txtValor.Text);
-            cmd.Parameters.AddWithValue("@pessoas", txtPessoas.Text);
+            cmd.Parameters.AddWithValue("@valor", txtAndar.Text);
+            cmd.Parameters.AddWithValue("@pessoas", txtOcupacao.Text);
 
             cmd.Parameters.AddWithValue("@id", id);
 
@@ -256,8 +254,8 @@ namespace SistemaHotel.Cadastros
 
             id = grid.CurrentRow.Cells[0].Value.ToString();
             txtQuarto.Text = grid.CurrentRow.Cells[1].Value.ToString();
-            txtValor.Text = grid.CurrentRow.Cells[2].Value.ToString();
-            txtPessoas.Text = grid.CurrentRow.Cells[3].Value.ToString();
+            txtAndar.Text = grid.CurrentRow.Cells[2].Value.ToString();
+            txtOcupacao.Text = grid.CurrentRow.Cells[3].Value.ToString();
            
             quartoAntigo = grid.CurrentRow.Cells[1].Value.ToString();
         }

@@ -57,8 +57,10 @@ namespace SistemaHotel.Cadastros
             grid.Columns[10].HeaderText = "Cidade";
             grid.Columns[11].HeaderText = "Rua";
             grid.Columns[12].HeaderText = "Numero";
+            grid.Columns[13].HeaderText = "Senha";
 
             grid.Columns[0].Visible = false;
+            grid.Columns[13].Visible = false;
 
             //grid.Columns[1].Width = 200;
         }
@@ -136,8 +138,6 @@ namespace SistemaHotel.Cadastros
         }
 
 
-
-
         private void FrmFuncionarios_Load(object sender, EventArgs e)
         {
             Listar();
@@ -197,10 +197,17 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
+            if (txtSenha.Text != txtConfirmaSenha.Text)
+            {
+                MessageBox.Show("Preencha a senha", "As senhas não conferem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtConfirmaSenha.Text = "";
+                txtSenha.Text = "";
+                txtSenha.Focus();
+                return;
+            }
+
 
             //CÓDIGO DO BOTÃO PARA SALVAR
-
-
             var enderecoId = endereco.inserir(cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
             var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId, txtConfirmaSenha.Text);
             funcionario.inserir(int.Parse(cbCargo.ValueMember), pessoaId);
@@ -265,7 +272,7 @@ namespace SistemaHotel.Cadastros
 
             pessoa.retornaPessoa(txtCPF.Text);
             endereco.alterar(pessoa.EnderecoId, cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
-            pessoa.alterar(pessoa.Id, txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text);
+            pessoa.alterar(pessoa.Id, txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, txtConfirmaSenha.Text);
             funcionario.alterar(int.Parse(cbCargo.ValueMember), pessoa.Id);
                      
             MessageBox.Show("Registro Editado com Sucesso!", "Dados Editados", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -304,6 +311,8 @@ namespace SistemaHotel.Cadastros
             habilitarCampos();
 
             txtCPF.Enabled = false;
+            txtConfirmaSenha.Enabled = false;
+            txtSenha.Enabled = false;
 
             id = grid.CurrentRow.Cells[0].Value.ToString();
             txtCPF.Text = grid.CurrentRow.Cells[2].Value.ToString();
@@ -316,6 +325,8 @@ namespace SistemaHotel.Cadastros
             txtCidade.Text = grid.CurrentRow.Cells[10].Value.ToString();
             txtEndereco.Text = grid.CurrentRow.Cells[11].Value.ToString();
             txtNumero.Text = grid.CurrentRow.Cells[12].Value.ToString();
+            txtSenha.Text = grid.CurrentRow.Cells[13].Value.ToString();
+            txtConfirmaSenha.Text = grid.CurrentRow.Cells[13].Value.ToString();
 
             //cpfAntigo = grid.CurrentRow.Cells[2].Value.ToString();
         }

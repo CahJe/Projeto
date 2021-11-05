@@ -115,12 +115,6 @@
     <Compile Include="Cadastros\Servicos.Designer.cs">
       <DependentUpon>Servicos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cadastros\Usuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cadastros\Usuarios.Designer.cs">
-      <DependentUpon>Usuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Cliente.cs" />
     <Compile Include="Classes\Endereco.cs" />
     <Compile Include="Classes\Estadia.cs" />
@@ -183,9 +177,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\Servicos.resx">
       <DependentUpon>Servicos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cadastros\Usuarios.resx">
-      <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

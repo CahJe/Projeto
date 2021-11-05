@@ -35,7 +35,6 @@
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hóspedesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quartosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuReservas = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +115,6 @@
             this.funcionáriosToolStripMenuItem,
             this.hóspedesToolStripMenuItem,
             this.quartosToolStripMenuItem,
-            this.usuáriosToolStripMenuItem,
             this.serviçosToolStripMenuItem,
             this.cargoToolStripMenuItem});
             this.MenuCadastro.Image = ((System.Drawing.Image)(resources.GetObject("MenuCadastro.Image")));
@@ -144,13 +142,6 @@
             this.quartosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quartosToolStripMenuItem.Text = "Quartos";
             this.quartosToolStripMenuItem.Click += new System.EventHandler(this.QuartosToolStripMenuItem_Click);
-            // 
-            // usuáriosToolStripMenuItem
-            // 
-            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.usuáriosToolStripMenuItem.Text = "Usuários";
-            this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.UsuáriosToolStripMenuItem_Click);
             // 
             // serviçosToolStripMenuItem
             // 
@@ -687,7 +678,6 @@
         private System.Windows.Forms.ToolStripMenuItem funcionáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hóspedesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quartosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviçosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuReservas;
         private System.Windows.Forms.ToolStripMenuItem novaReservaToolStripMenuItem;

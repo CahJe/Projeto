@@ -396,10 +396,11 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(310, 160);
+            this.txtSenha.Location = new System.Drawing.Point(310, 161);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(123, 20);
             this.txtSenha.TabIndex = 78;
+            this.txtSenha.UseSystemPasswordChar = true;
             // 
             // txtConfirmaSenha
             // 
@@ -407,6 +408,7 @@
             this.txtConfirmaSenha.Name = "txtConfirmaSenha";
             this.txtConfirmaSenha.Size = new System.Drawing.Size(122, 20);
             this.txtConfirmaSenha.TabIndex = 79;
+            this.txtConfirmaSenha.UseSystemPasswordChar = true;
             // 
             // cbSexo
             // 

@@ -36,10 +36,12 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.txtValor = new System.Windows.Forms.TextBox();
+            this.txtAndar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPessoas = new System.Windows.Forms.TextBox();
+            this.txtOcupacao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,11 +52,11 @@
             this.grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.GridColor = System.Drawing.SystemColors.Control;
-            this.grid.Location = new System.Drawing.Point(30, 56);
+            this.grid.Location = new System.Drawing.Point(29, 80);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(370, 300);
+            this.grid.Size = new System.Drawing.Size(370, 281);
             this.grid.TabIndex = 79;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
             // 
@@ -63,17 +65,17 @@
             this.txtQuarto.Enabled = false;
             this.txtQuarto.Location = new System.Drawing.Point(71, 12);
             this.txtQuarto.Name = "txtQuarto";
-            this.txtQuarto.Size = new System.Drawing.Size(68, 20);
+            this.txtQuarto.Size = new System.Drawing.Size(48, 20);
             this.txtQuarto.TabIndex = 77;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 15);
+            this.label2.Location = new System.Drawing.Point(8, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 78;
-            this.label2.Text = "Quarto:";
+            this.label2.Text = "N° Quarto:";
             // 
             // btnExcluir
             // 
@@ -134,39 +136,55 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.BtnNovo_Click);
             // 
-            // txtValor
+            // txtAndar
             // 
-            this.txtValor.Enabled = false;
-            this.txtValor.Location = new System.Drawing.Point(209, 12);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(68, 20);
-            this.txtValor.TabIndex = 84;
+            this.txtAndar.Enabled = false;
+            this.txtAndar.Location = new System.Drawing.Point(168, 11);
+            this.txtAndar.Name = "txtAndar";
+            this.txtAndar.Size = new System.Drawing.Size(57, 20);
+            this.txtAndar.TabIndex = 84;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 15);
+            this.label1.Location = new System.Drawing.Point(127, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 85;
-            this.label1.Text = "Valor:";
+            this.label1.Text = "Andar:";
             // 
-            // txtPessoas
+            // txtOcupacao
             // 
-            this.txtPessoas.Enabled = false;
-            this.txtPessoas.Location = new System.Drawing.Point(361, 15);
-            this.txtPessoas.Name = "txtPessoas";
-            this.txtPessoas.Size = new System.Drawing.Size(39, 20);
-            this.txtPessoas.TabIndex = 86;
+            this.txtOcupacao.Enabled = false;
+            this.txtOcupacao.Location = new System.Drawing.Point(337, 11);
+            this.txtOcupacao.Name = "txtOcupacao";
+            this.txtOcupacao.Size = new System.Drawing.Size(39, 20);
+            this.txtOcupacao.TabIndex = 86;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(305, 18);
+            this.label3.Location = new System.Drawing.Point(236, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 87;
-            this.label3.Text = "Pessoas:";
+            this.label3.Text = "Ocupação maxima:";
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(72, 49);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(304, 20);
+            this.txtDescricao.TabIndex = 88;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 89;
+            this.label4.Text = "Descrição:";
             // 
             // FrmQuartos
             // 
@@ -174,9 +192,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(514, 373);
-            this.Controls.Add(this.txtPessoas);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDescricao);
+            this.Controls.Add(this.txtOcupacao);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtValor);
+            this.Controls.Add(this.txtAndar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -206,9 +226,11 @@
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.TextBox txtQuarto;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.TextBox txtAndar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPessoas;
+        private System.Windows.Forms.TextBox txtOcupacao;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.Label label4;
     }
 }
