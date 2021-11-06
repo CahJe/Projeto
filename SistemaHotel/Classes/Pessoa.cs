@@ -101,7 +101,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                throw new Exception("Falha ao inserir pessoa na base -> Servidor SQL Erro: " + ex);
+                throw new Exception("Falha ao alterar pessoa na base -> Servidor SQL Erro: " + ex);
             }
         }
 

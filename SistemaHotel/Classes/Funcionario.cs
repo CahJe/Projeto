@@ -70,7 +70,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                throw new Exception("Falha ao inserir pessoa na base -> Servidor SQL Erro: " + ex);
+                throw new Exception("Falha ao alterar funcionario na base -> Servidor SQL Erro: " + ex);
             }
         }
 
@@ -89,7 +89,7 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-                throw new Exception("Falha ao inserir pessoa na base -> Servidor SQL Erro: " + ex);
+                throw new Exception("Falha ao deletar funcionário na base -> Servidor SQL Erro: " + ex);
             }
         }
 
@@ -110,7 +110,6 @@ namespace SistemaHotel.Classes
 
             return false;
         }
-
 
 
         public DataTable ListaFuncionario()

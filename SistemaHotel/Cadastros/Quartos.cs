@@ -18,7 +18,7 @@ namespace SistemaHotel.Cadastros
         Conexao con = new Conexao();
         string sql;
         SqlCommand cmd;
-        string id;
+        string numero;
         Quarto quarto = new Quarto();
 
         string quartoAntigo;
@@ -31,30 +31,21 @@ namespace SistemaHotel.Cadastros
 
         private void FormatarDG()
         {
-            grid.Columns[0].HeaderText = "ID";
-            grid.Columns[1].HeaderText = "Quarto";
-            grid.Columns[2].HeaderText = "Valor";
-            grid.Columns[3].HeaderText = "Pessoas";
-            
+            grid.Columns[0].HeaderText = "Numero";
+            grid.Columns[1].HeaderText = "Andar";
+            grid.Columns[2].HeaderText = "Descricao";
+            grid.Columns[3].HeaderText = "Ocupado";
+            grid.Columns[4].HeaderText = "Ocupacao_Maxima";
 
-            grid.Columns[0].Visible = false;
+            grid.Columns[3].Visible = false;
 
             //grid.Columns[1].Width = 200;
         }
 
         private void Listar()
         {
-
-            con.AbrirCon();
-            sql = "SELECT * FROM quartos order by quarto asc";
-            cmd = new SqlCommand(sql, con.con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = quarto.ListaQuarto();
             grid.DataSource = dt;
-            con.FecharCon();
-
             FormatarDG();
         }
 
@@ -66,6 +57,7 @@ namespace SistemaHotel.Cadastros
             txtQuarto.Enabled = true;
             txtAndar.Enabled = true;
             txtOcupacao.Enabled = true;
+            txtDescricao.Enabled = true;
            
         }
 
@@ -75,7 +67,7 @@ namespace SistemaHotel.Cadastros
             txtQuarto.Enabled = false;
             txtAndar.Enabled = false;
             txtOcupacao.Enabled = false;
-            
+            txtDescricao.Enabled = false;
         }
 
 
@@ -84,7 +76,7 @@ namespace SistemaHotel.Cadastros
             txtQuarto.Text = "";
             txtAndar.Text = "";
             txtOcupacao.Text = "";
-            
+            txtDescricao.Text = "";           
         }
 
 
@@ -175,42 +167,9 @@ namespace SistemaHotel.Cadastros
             }
 
             //CÓDIGO DO BOTÃO PARA EDITAR
-            con.AbrirCon();
-            sql = "UPDATE quartos SET quarto = @quarto, valor = @valor, pessoas = @pessoas where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@quarto", txtQuarto.Text);
-            cmd.Parameters.AddWithValue("@valor", txtAndar.Text);
-            cmd.Parameters.AddWithValue("@pessoas", txtOcupacao.Text);
 
-            cmd.Parameters.AddWithValue("@id", id);
-
-
-            //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
-
-            if (txtQuarto.Text != quartoAntigo)
-            {
-                SqlCommand cmdVerificar;
-
-                cmdVerificar = new SqlCommand("SELECT * FROM quartos where quarto = @quarto", con.con);
-                cmdVerificar.Parameters.AddWithValue("@quarto", txtQuarto.Text);
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmdVerificar;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    MessageBox.Show("Quarto já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtQuarto.Text = "";
-                    txtQuarto.Focus();
-                    return;
-                }
-
-            }
-
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
+            quarto.alterar(int.Parse(numero), int.Parse(txtOcupacao.Text), txtDescricao.Text);
+           
             MessageBox.Show("Registro Editado com Sucesso!", "Dados Editados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnEditar.Enabled = false;
@@ -227,13 +186,9 @@ namespace SistemaHotel.Cadastros
             if (resultado == DialogResult.Yes)
             {
                 //CÓDIGO DO BOTÃO PARA EXCLUIR
-                con.AbrirCon();
-                sql = "DELETE FROM quartos where id = @id";
-                cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                con.FecharCon();
 
+                quarto.deletar(int.Parse(numero));                
+                
                 MessageBox.Show("Registro Excluido com Sucesso!", "Registro Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnNovo.Enabled = true;
                 btnEditar.Enabled = false;
@@ -251,13 +206,14 @@ namespace SistemaHotel.Cadastros
             btnExcluir.Enabled = true;
             btnSalvar.Enabled = false;
             habilitarCampos();
+            txtQuarto.Enabled = false;
 
-            id = grid.CurrentRow.Cells[0].Value.ToString();
-            txtQuarto.Text = grid.CurrentRow.Cells[1].Value.ToString();
-            txtAndar.Text = grid.CurrentRow.Cells[2].Value.ToString();
-            txtOcupacao.Text = grid.CurrentRow.Cells[3].Value.ToString();
+            numero = grid.CurrentRow.Cells[0].Value.ToString();
+            txtQuarto.Text = grid.CurrentRow.Cells[0].Value.ToString();
+            txtAndar.Text = grid.CurrentRow.Cells[1].Value.ToString();
+            txtOcupacao.Text = grid.CurrentRow.Cells[4].Value.ToString();
            
-            quartoAntigo = grid.CurrentRow.Cells[1].Value.ToString();
+            quartoAntigo = grid.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }
