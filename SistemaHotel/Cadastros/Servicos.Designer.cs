@@ -31,20 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServicos));
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // txtValor
             // 
             this.txtValor.Enabled = false;
-            this.txtValor.Location = new System.Drawing.Point(300, 31);
+            this.txtValor.Location = new System.Drawing.Point(88, 75);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(96, 20);
             this.txtValor.TabIndex = 79;
@@ -52,28 +56,28 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(260, 34);
+            this.label4.Location = new System.Drawing.Point(53, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 81;
             this.label4.Text = "Valor:";
             // 
-            // txtNome
+            // txtDescricao
             // 
-            this.txtNome.Enabled = false;
-            this.txtNome.Location = new System.Drawing.Point(88, 32);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(115, 20);
-            this.txtNome.TabIndex = 78;
+            this.txtDescricao.Enabled = false;
+            this.txtDescricao.Location = new System.Drawing.Point(88, 49);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(308, 20);
+            this.txtDescricao.TabIndex = 78;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 35);
+            this.label2.Location = new System.Drawing.Point(29, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 80;
-            this.label2.Text = "Nome:";
+            this.label2.Text = "Descricao:";
             // 
             // btnExcluir
             // 
@@ -139,12 +143,58 @@
             this.grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.GridColor = System.Drawing.SystemColors.Control;
-            this.grid.Location = new System.Drawing.Point(36, 76);
+            this.grid.Location = new System.Drawing.Point(36, 114);
             this.grid.Name = "grid";
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(360, 296);
+            this.grid.Size = new System.Drawing.Size(360, 258);
             this.grid.TabIndex = 88;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
+            // 
+            // cbTipo
+            // 
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Items.AddRange(new object[] {
+            "",
+            "Ambiente agradável",
+            "Wi-fi gratuito",
+            "Bom atendimento",
+            "Limpeza",
+            "Café da manhã",
+            "Alimentação",
+            "TV a cabo",
+            "Chuveiro quente"});
+            this.cbTipo.Location = new System.Drawing.Point(88, 22);
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.Size = new System.Drawing.Size(129, 21);
+            this.cbTipo.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(54, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "Tipo:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(190, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.TabIndex = 95;
+            this.label3.Text = "0,00";
+            // 
+            // cbAtivo
+            // 
+            this.cbAtivo.AutoSize = true;
+            this.cbAtivo.Location = new System.Drawing.Point(352, 90);
+            this.cbAtivo.Name = "cbAtivo";
+            this.cbAtivo.Size = new System.Drawing.Size(50, 17);
+            this.cbAtivo.TabIndex = 96;
+            this.cbAtivo.Text = "Ativo";
+            this.cbAtivo.UseVisualStyleBackColor = true;
             // 
             // FrmServicos
             // 
@@ -152,6 +202,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(511, 399);
+            this.Controls.Add(this.cbAtivo);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnSalvar);
@@ -159,7 +213,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -177,12 +231,16 @@
 
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.ComboBox cbTipo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox cbAtivo;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,8 @@ namespace SistemaHotel.Cadastros
         string sql;
         SqlCommand cmd;
         string id;
+        Servico servico = new Servico();
+
         public FrmServicos()
         {
             InitializeComponent();
@@ -26,29 +29,24 @@ namespace SistemaHotel.Cadastros
 
         private void FormatarDG()
         {
-            grid.Columns[0].HeaderText = "ID";
-            grid.Columns[1].HeaderText = "Serviço";
-            grid.Columns[2].HeaderText = "Valor";
+            grid.Columns[0].HeaderText = "Id";
+            grid.Columns[1].HeaderText = "Tipo";
+            grid.Columns[2].HeaderText = "Descricao";
+            grid.Columns[3].HeaderText = "Valor";
+            grid.Columns[4].HeaderText = "Ativo";
 
-            grid.Columns[2].DefaultCellStyle.Format = "C2";
+            grid.Columns[3].DefaultCellStyle.Format = "C2";
 
             grid.Columns[0].Visible = false;
+            grid.Columns[4].Visible = false;
 
             //grid.Columns[1].Width = 200;
         }
 
         private void Listar()
         {
-
-            con.AbrirCon();
-            sql = "SELECT * FROM servicos order by nome asc";
-            cmd = new SqlCommand(sql, con.con);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var dt = servico.ListaServico();
             grid.DataSource = dt;
-            con.FecharCon();
 
             FormatarDG();
         }
@@ -56,30 +54,34 @@ namespace SistemaHotel.Cadastros
 
         private void habilitarCampos()
         {
-            txtNome.Enabled = true;
+            txtDescricao.Enabled = true;
             txtValor.Enabled = true;
+            cbAtivo.Enabled = true;
+            cbTipo.Enabled = true;
 
-            txtNome.Focus();
-
+            cbTipo.Focus();
         }
 
 
         private void desabilitarCampos()
         {
-            txtNome.Enabled = false;
+            txtDescricao.Enabled = false;
             txtValor.Enabled = false;
+            cbTipo.Enabled = false;
+            cbAtivo.Enabled = false;
         }
 
 
         private void limparCampos()
         {
-            txtNome.Text = "";
+            txtDescricao.Text = "";
             txtValor.Text = "";
-
+            cbAtivo.Checked = false;
+            cbTipo.Text = "";
         }
 
 
-            private void FrmServicos_Load(object sender, EventArgs e)
+        private void FrmServicos_Load(object sender, EventArgs e)
         {
             Listar();
         }
@@ -96,29 +98,19 @@ namespace SistemaHotel.Cadastros
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text.ToString().Trim() == "")
+            if (txtDescricao.Text.ToString().Trim() == "")
             {
-                txtNome.Text = "";
+                txtDescricao.Text = "";
                 MessageBox.Show("Preencha o Nome", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtNome.Focus();
+                txtDescricao.Focus();
                 return;
             }
 
-
-
-
             //CÓDIGO DO BOTÃO PARA SALVAR
-            con.AbrirCon();
-            sql = "INSERT INTO servicos (nome, valor) VALUES (@nome, @valor)";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@valor", txtValor.Text.Replace(",", "."));
-            
+            var valor = txtValor.Text.Replace(".","").Replace(",", ".");
 
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
+            servico.inserir(cbTipo.Text, txtDescricao.Text, Convert.ToDecimal(valor), cbAtivo.Checked);                
+           
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
             btnSalvar.Enabled = false;
@@ -133,38 +125,29 @@ namespace SistemaHotel.Cadastros
             btnExcluir.Enabled = true;
             btnSalvar.Enabled = false;
             habilitarCampos();
+            cbTipo.Enabled = false;
 
             id = grid.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = grid.CurrentRow.Cells[1].Value.ToString();
-            txtValor.Text = grid.CurrentRow.Cells[2].Value.ToString();
-
+            cbTipo.Text = grid.CurrentRow.Cells[1].Value.ToString();
+            txtDescricao.Text = grid.CurrentRow.Cells[2].Value.ToString();
+            txtValor.Text = grid.CurrentRow.Cells[3].Value.ToString();
+            cbAtivo.Checked = Convert.ToBoolean(grid.CurrentRow.Cells[4].Value.ToString());
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text.ToString().Trim() == "")
+            if (txtDescricao.Text.ToString().Trim() == "")
             {
-                txtNome.Text = "";
+                txtDescricao.Text = "";
                 MessageBox.Show("Preencha o Nome", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtNome.Focus();
+                txtDescricao.Focus();
                 return;
             }
 
 
-
-
             //CÓDIGO DO BOTÃO PARA EDITAR
-            con.AbrirCon();
-            sql = "UPDATE servicos SET nome = @nome, valor = @valor where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@valor", txtValor.Text.Replace(",", "."));
 
-            cmd.Parameters.AddWithValue("@id", id);
-
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
+            servico.alterar(int.Parse(id), txtDescricao.Text, Convert.ToDecimal(txtValor.Text), cbAtivo.Checked);
 
             MessageBox.Show("Registro Editado com Sucesso!", "Dados Editados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;
@@ -181,19 +164,14 @@ namespace SistemaHotel.Cadastros
             if (resultado == DialogResult.Yes)
             {
                 //CÓDIGO DO BOTÃO PARA EXCLUIR
-                con.AbrirCon();
-                sql = "DELETE FROM servicos where id = @id";
-                cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                con.FecharCon();
-
+                servico.deletar(int.Parse(id));
                 MessageBox.Show("Registro Excluido com Sucesso!", "Registro Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnNovo.Enabled = true;
                 btnEditar.Enabled = false;
                 btnExcluir.Enabled = false;
-                txtNome.Text = "";
-                txtNome.Enabled = false;
+
+                limparCampos();
+                desabilitarCampos();
                 Listar();
             }
         }
