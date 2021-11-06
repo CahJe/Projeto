@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,8 @@ namespace SistemaHotel.Reservas
 {
     public partial class FrmReservas : Form
     {
-
+        Funcionario funcionario = new Funcionario();
+        Cliente cliente = new Cliente();
         Conexao con = new Conexao();
         string sql;
         SqlCommand cmd;
@@ -42,7 +44,7 @@ namespace SistemaHotel.Reservas
         private void CarregarCombobox()
         {
             con.AbrirCon();
-            sql = "SELECT * FROM quartos order by quarto asc";
+            sql = "SELECT * FROM quarto order by Numero asc";
             cmd = new SqlCommand(sql, con.con);
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
@@ -50,7 +52,7 @@ namespace SistemaHotel.Reservas
             da.Fill(dt);
             cbQuarto.DataSource = dt;
             //cbCargo.ValueMember = "id";
-            cbQuarto.DisplayMember = "quarto";
+            cbQuarto.DisplayMember = "Descricao";
 
             con.FecharCon();
         }
@@ -59,8 +61,8 @@ namespace SistemaHotel.Reservas
         private void FormatarDG()
         {
             grid.Columns[0].HeaderText = "ID";
-            grid.Columns[1].HeaderText = "Quarto";
-            grid.Columns[2].HeaderText = "Data";
+            grid.Columns[1].HeaderText = "QuartoNumero";
+            grid.Columns[2].HeaderText = "DataEntrada";
            
 
             grid.Columns[0].Visible = false;
@@ -74,10 +76,9 @@ namespace SistemaHotel.Reservas
         {
 
             con.AbrirCon();
-            sql = "SELECT * FROM ocupacoes where id_reserva = @id and funcionario = @funcionario order by data asc";
+            sql = "SELECT * FROM Estadia where Ativo = @Id order by DataEntrada asc";
             cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@id", "0");
-            cmd.Parameters.AddWithValue("@funcionario", Program.nomeUsuario);
+            cmd.Parameters.AddWithValue("@id", "1");
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
             DataTable dt = new DataTable();
@@ -94,7 +95,7 @@ namespace SistemaHotel.Reservas
 
         private void habilitarCampos()
         {
-            txtNome.Enabled = true;
+            txtCpf.Enabled = true;
 
             txtValor.Enabled = true;
             cbQuarto.Enabled = true;
@@ -102,14 +103,14 @@ namespace SistemaHotel.Reservas
             cbAno.Enabled = true;
             txtTelefone.Enabled = true;
             btnRemove.Enabled = true;
-            txtNome.Focus();
+            txtCpf.Focus();
 
         }
 
 
         private void desabilitarCampos()
         {
-            txtNome.Enabled = false;
+            txtCpf.Enabled = false;
             txtDias.Enabled = false;
             txtValor.Enabled = false;
             cbQuarto.Enabled = false;
@@ -122,7 +123,7 @@ namespace SistemaHotel.Reservas
 
         private void limparCampos()
         {
-            txtNome.Text = "";
+            txtCpf.Text = "";
             
             txtDias.Text = "0";
             txtTelefone.Text = "";
@@ -250,7 +251,7 @@ namespace SistemaHotel.Reservas
                 }
 
                 
-                sql = "SELECT * FROM ocupacoes where data = @data and quarto = @quarto";
+                sql = "SELECT * FROM Estadia where DataEntrada = @data and QuartoNumero = @quarto";
                 cmd = new SqlCommand(sql, con.con);
                 cmd.Parameters.AddWithValue("@data", Convert.ToDateTime(data));
                 cmd.Parameters.AddWithValue("@quarto", cbQuarto.Text);
@@ -499,7 +500,6 @@ namespace SistemaHotel.Reservas
 
             verificarDias31();
             verificarOcupacoes();
-
             
         }
 
@@ -681,7 +681,7 @@ namespace SistemaHotel.Reservas
         {
             //CÓDIGO DO BOTÃO PARA SALVAR
             con.AbrirCon();
-            sql = "INSERT INTO ocupacoes (quarto, data, funcionario) VALUES (@quarto, @data, @funcionario)";
+            sql = "INSERT INTO Estadia (quarto, data, funcionario) VALUES (@quarto, @data, @funcionario)";
             cmd = new SqlCommand(sql, con.con);
             cmd.Parameters.AddWithValue("@quarto", cbQuarto.Text);
             cmd.Parameters.AddWithValue("@data", Convert.ToDateTime(dataPainel));
@@ -1540,11 +1540,19 @@ namespace SistemaHotel.Reservas
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
 
-            if (txtNome.Text.ToString().Trim() == "")
+            if (txtCpf.Text.ToString().Trim() == "")
             {
-                txtNome.Text = "";
+                txtCpf.Text = "";
                 MessageBox.Show("Preencha o Nome", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtNome.Focus();
+                txtCpf.Focus();
+                return;
+            }
+
+            if (!cliente.verificaExistencia(txtCpf.Text))
+            {
+                MessageBox.Show("CPF não possuí cadastro na base!", "Dados incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCpf.Text = "";
+                txtCpf.Focus();
                 return;
             }
 
@@ -1566,7 +1574,7 @@ namespace SistemaHotel.Reservas
                     cmd.Parameters.AddWithValue("@saida", Convert.ToDateTime(dataFinal));
                     cmd.Parameters.AddWithValue("@dias", txtDias.Text);
                     cmd.Parameters.AddWithValue("@valor", valorTotal);
-                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@nome", txtCpf.Text);
                     cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text);
                     cmd.Parameters.AddWithValue("@funcionario", Program.nomeUsuario);
 

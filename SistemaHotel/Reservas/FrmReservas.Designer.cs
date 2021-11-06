@@ -36,7 +36,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -111,6 +110,7 @@
             this.lbl29 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -226,22 +226,14 @@
             this.label5.TabIndex = 72;
             this.label5.Text = "Telefone:";
             // 
-            // txtNome
-            // 
-            this.txtNome.Enabled = false;
-            this.txtNome.Location = new System.Drawing.Point(80, 72);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(128, 20);
-            this.txtNome.TabIndex = 68;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(26, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 71;
-            this.label2.Text = "Nome:";
+            this.label2.Text = "CPF:";
             // 
             // cbMes
             // 
@@ -1029,12 +1021,22 @@
             this.lblTotal.TabIndex = 150;
             this.lblTotal.Text = "0";
             // 
+            // txtCpf
+            // 
+            this.txtCpf.Enabled = false;
+            this.txtCpf.Location = new System.Drawing.Point(80, 76);
+            this.txtCpf.Mask = "000,000,000-00";
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(112, 20);
+            this.txtCpf.TabIndex = 151;
+            // 
             // FrmReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(606, 411);
+            this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel28);
@@ -1084,7 +1086,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -1169,7 +1170,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbMes;
         private System.Windows.Forms.Label label1;
@@ -1244,5 +1244,6 @@
         private System.Windows.Forms.Label lbl29;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.MaskedTextBox txtCpf;
     }
 }
