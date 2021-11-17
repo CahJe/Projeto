@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaHotel.DAL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -121,6 +122,32 @@ namespace SistemaHotel.Classes
                 throw new Exception("Servidor SQL Erro: " + ex);
             }
         }
+
+        public List<String> Lista()
+        {
+            try
+            {
+                con.AbrirCon();
+
+                List<string> list = new List<string>();
+                sql = "SELECT * FROM servicos order by Tipo asc";
+                cmd = new SqlCommand(sql, con.con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    list[0] = reader[0].ToString();
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Servidor SQL Erro: " + ex);
+            }
+        }
+
 
         public void deletar(int id)
         {

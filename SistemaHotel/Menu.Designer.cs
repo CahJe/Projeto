@@ -40,15 +40,6 @@
             this.MenuReservas = new System.Windows.Forms.ToolStripMenuItem();
             this.novaReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quadroDeReservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuChekInOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.novoServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuRelatorios = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioDeServiçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioDeMovimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioDeMovimentaçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTopo = new System.Windows.Forms.Panel();
@@ -99,8 +90,6 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuCadastro,
             this.MenuReservas,
-            this.MenuChekInOut,
-            this.MenuRelatorios,
             this.MenuSair});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -181,78 +170,6 @@
             this.quadroDeReservasToolStripMenuItem.Text = "Consultar Reservas";
             this.quadroDeReservasToolStripMenuItem.Click += new System.EventHandler(this.QuadroDeReservasToolStripMenuItem_Click);
             // 
-            // MenuChekInOut
-            // 
-            this.MenuChekInOut.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoServiçoToolStripMenuItem,
-            this.checkOutToolStripMenuItem});
-            this.MenuChekInOut.Image = ((System.Drawing.Image)(resources.GetObject("MenuChekInOut.Image")));
-            this.MenuChekInOut.Name = "MenuChekInOut";
-            this.MenuChekInOut.Size = new System.Drawing.Size(106, 20);
-            this.MenuChekInOut.Text = "Check In/Out";
-            // 
-            // novoServiçoToolStripMenuItem
-            // 
-            this.novoServiçoToolStripMenuItem.Name = "novoServiçoToolStripMenuItem";
-            this.novoServiçoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.novoServiçoToolStripMenuItem.Text = "Check In";
-            this.novoServiçoToolStripMenuItem.Click += new System.EventHandler(this.NovoServiçoToolStripMenuItem_Click);
-            // 
-            // checkOutToolStripMenuItem
-            // 
-            this.checkOutToolStripMenuItem.Name = "checkOutToolStripMenuItem";
-            this.checkOutToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.checkOutToolStripMenuItem.Text = "Check Out";
-            this.checkOutToolStripMenuItem.Click += new System.EventHandler(this.CheckOutToolStripMenuItem_Click);
-            // 
-            // MenuRelatorios
-            // 
-            this.MenuRelatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.relatórioDeProdutosToolStripMenuItem,
-            this.relatórioDeVendasToolStripMenuItem,
-            this.relatórioDeServiçosToolStripMenuItem,
-            this.relatórioDeMovimentaçõesToolStripMenuItem,
-            this.relatórioDeMovimentaçõesToolStripMenuItem1});
-            this.MenuRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("MenuRelatorios.Image")));
-            this.MenuRelatorios.Name = "MenuRelatorios";
-            this.MenuRelatorios.Size = new System.Drawing.Size(87, 20);
-            this.MenuRelatorios.Text = "Relatórios";
-            // 
-            // relatórioDeProdutosToolStripMenuItem
-            // 
-            this.relatórioDeProdutosToolStripMenuItem.Name = "relatórioDeProdutosToolStripMenuItem";
-            this.relatórioDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.relatórioDeProdutosToolStripMenuItem.Text = "Relatório de Produtos";
-            this.relatórioDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.RelatórioDeProdutosToolStripMenuItem_Click);
-            // 
-            // relatórioDeVendasToolStripMenuItem
-            // 
-            this.relatórioDeVendasToolStripMenuItem.Name = "relatórioDeVendasToolStripMenuItem";
-            this.relatórioDeVendasToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.relatórioDeVendasToolStripMenuItem.Text = "Relatório de Vendas";
-            this.relatórioDeVendasToolStripMenuItem.Click += new System.EventHandler(this.RelatórioDeVendasToolStripMenuItem_Click);
-            // 
-            // relatórioDeServiçosToolStripMenuItem
-            // 
-            this.relatórioDeServiçosToolStripMenuItem.Name = "relatórioDeServiçosToolStripMenuItem";
-            this.relatórioDeServiçosToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.relatórioDeServiçosToolStripMenuItem.Text = "Relatório de Serviços";
-            this.relatórioDeServiçosToolStripMenuItem.Click += new System.EventHandler(this.RelatórioDeServiçosToolStripMenuItem_Click);
-            // 
-            // relatórioDeMovimentaçõesToolStripMenuItem
-            // 
-            this.relatórioDeMovimentaçõesToolStripMenuItem.Name = "relatórioDeMovimentaçõesToolStripMenuItem";
-            this.relatórioDeMovimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.relatórioDeMovimentaçõesToolStripMenuItem.Text = "Relatório de Entrada / Saída";
-            this.relatórioDeMovimentaçõesToolStripMenuItem.Click += new System.EventHandler(this.RelatórioDeMovimentaçõesToolStripMenuItem_Click);
-            // 
-            // relatórioDeMovimentaçõesToolStripMenuItem1
-            // 
-            this.relatórioDeMovimentaçõesToolStripMenuItem1.Name = "relatórioDeMovimentaçõesToolStripMenuItem1";
-            this.relatórioDeMovimentaçõesToolStripMenuItem1.Size = new System.Drawing.Size(225, 22);
-            this.relatórioDeMovimentaçõesToolStripMenuItem1.Text = "Relatório de Movimentações";
-            this.relatórioDeMovimentaçõesToolStripMenuItem1.Click += new System.EventHandler(this.RelatórioDeMovimentaçõesToolStripMenuItem1_Click);
-            // 
             // MenuSair
             // 
             this.MenuSair.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -265,7 +182,7 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -682,21 +599,12 @@
         private System.Windows.Forms.ToolStripMenuItem MenuReservas;
         private System.Windows.Forms.ToolStripMenuItem novaReservaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quadroDeReservasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuChekInOut;
-        private System.Windows.Forms.ToolStripMenuItem novoServiçoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkOutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuRelatorios;
         private System.Windows.Forms.ToolStripMenuItem MenuSair;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.Panel pnlTopo;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem cargoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioDeProdutosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioDeVendasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioDeServiçosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioDeMovimentaçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioDeMovimentaçõesToolStripMenuItem1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox7;

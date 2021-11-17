@@ -124,7 +124,7 @@
     <Compile Include="Classes\Servico.cs" />
     <Compile Include="Classes\ServicoPrestado.cs" />
     <Compile Include="Classes\TipoFuncionario.cs" />
-    <Compile Include="Conexao.cs" />
+    <Compile Include="DAL\Conexao.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,17 +139,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reservas\FrmCheckIn.cs">
+    <Compile Include="Reservas\FormReservas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reservas\FrmCheckIn.Designer.cs">
-      <DependentUpon>FrmCheckIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reservas\FrmCheckOut.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reservas\FrmCheckOut.Designer.cs">
-      <DependentUpon>FrmCheckOut.cs</DependentUpon>
+    <Compile Include="Reservas\FormReservas.Designer.cs">
+      <DependentUpon>FormReservas.cs</DependentUpon>
     </Compile>
     <Compile Include="Reservas\FrmConsultarReservas.cs">
       <SubType>Form</SubType>
@@ -194,11 +188,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reservas\FrmCheckIn.resx">
-      <DependentUpon>FrmCheckIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reservas\FrmCheckOut.resx">
-      <DependentUpon>FrmCheckOut.cs</DependentUpon>
+    <EmbeddedResource Include="Reservas\FormReservas.resx">
+      <DependentUpon>FormReservas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reservas\FrmConsultarReservas.resx">
       <DependentUpon>FrmConsultarReservas.cs</DependentUpon>

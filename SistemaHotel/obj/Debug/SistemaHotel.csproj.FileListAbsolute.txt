@@ -668,3 +668,4 @@ C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.Reservas.F
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.Reservas.FrmReservas.resources
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.csproj.GenerateResource.cache
 C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.csproj.CoreCompileInputs.cache
+C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.csprojAssemblyReference.cache

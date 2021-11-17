@@ -111,6 +111,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.cbServico = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -193,7 +195,7 @@
             // 
             this.cbQuarto.Enabled = false;
             this.cbQuarto.FormattingEnabled = true;
-            this.cbQuarto.Location = new System.Drawing.Point(80, 32);
+            this.cbQuarto.Location = new System.Drawing.Point(80, 54);
             this.cbQuarto.Name = "cbQuarto";
             this.cbQuarto.Size = new System.Drawing.Size(67, 21);
             this.cbQuarto.TabIndex = 70;
@@ -202,7 +204,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 36);
+            this.label6.Location = new System.Drawing.Point(26, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 73;
@@ -211,7 +213,7 @@
             // txtTelefone
             // 
             this.txtTelefone.Enabled = false;
-            this.txtTelefone.Location = new System.Drawing.Point(294, 70);
+            this.txtTelefone.Location = new System.Drawing.Point(294, 83);
             this.txtTelefone.Mask = "(99) 00000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(112, 20);
@@ -220,7 +222,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(236, 77);
+            this.label5.Location = new System.Drawing.Point(236, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 72;
@@ -229,7 +231,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 76);
+            this.label2.Location = new System.Drawing.Point(26, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 71;
@@ -252,7 +254,7 @@
             "10",
             "11",
             "12"});
-            this.cbMes.Location = new System.Drawing.Point(201, 32);
+            this.cbMes.Location = new System.Drawing.Point(201, 54);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(67, 21);
             this.cbMes.TabIndex = 79;
@@ -262,7 +264,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 37);
+            this.label1.Location = new System.Drawing.Point(165, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 80;
@@ -285,7 +287,7 @@
             "2028",
             "2029",
             "2030"});
-            this.cbAno.Location = new System.Drawing.Point(341, 31);
+            this.cbAno.Location = new System.Drawing.Point(341, 53);
             this.cbAno.Name = "cbAno";
             this.cbAno.Size = new System.Drawing.Size(67, 21);
             this.cbAno.TabIndex = 81;
@@ -294,7 +296,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(306, 34);
+            this.label3.Location = new System.Drawing.Point(306, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 82;
@@ -303,7 +305,7 @@
             // txtDias
             // 
             this.txtDias.Enabled = false;
-            this.txtDias.Location = new System.Drawing.Point(498, 32);
+            this.txtDias.Location = new System.Drawing.Point(498, 54);
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(62, 20);
             this.txtDias.TabIndex = 83;
@@ -312,7 +314,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(457, 36);
+            this.label4.Location = new System.Drawing.Point(457, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 84;
@@ -321,7 +323,7 @@
             // txtValor
             // 
             this.txtValor.Enabled = false;
-            this.txtValor.Location = new System.Drawing.Point(498, 70);
+            this.txtValor.Location = new System.Drawing.Point(498, 83);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(62, 20);
             this.txtValor.TabIndex = 85;
@@ -329,7 +331,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(428, 74);
+            this.label7.Location = new System.Drawing.Point(428, 87);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 86;
@@ -1024,11 +1026,28 @@
             // txtCpf
             // 
             this.txtCpf.Enabled = false;
-            this.txtCpf.Location = new System.Drawing.Point(80, 76);
+            this.txtCpf.Location = new System.Drawing.Point(80, 22);
             this.txtCpf.Mask = "000,000,000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(112, 20);
             this.txtCpf.TabIndex = 151;
+            // 
+            // cbServico
+            // 
+            this.cbServico.FormattingEnabled = true;
+            this.cbServico.Location = new System.Drawing.Point(80, 87);
+            this.cbServico.Name = "cbServico";
+            this.cbServico.Size = new System.Drawing.Size(121, 21);
+            this.cbServico.TabIndex = 152;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 95);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.TabIndex = 153;
+            this.label9.Text = "Serviços:";
             // 
             // FrmReservas
             // 
@@ -1036,6 +1055,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(606, 411);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cbServico);
             this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label8);
@@ -1245,5 +1266,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.MaskedTextBox txtCpf;
+        private System.Windows.Forms.ComboBox cbServico;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SistemaHotel.Classes;
+using SistemaHotel.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,10 +52,22 @@ namespace SistemaHotel.Reservas
             DataTable dt = new DataTable();
             da.Fill(dt);
             cbQuarto.DataSource = dt;
-            //cbCargo.ValueMember = "id";
+            cbQuarto.ValueMember = "id";
             cbQuarto.DisplayMember = "Descricao";
-
             con.FecharCon();
+
+            con.AbrirCon();
+            sql = "SELECT * FROM Servico order by Id asc";
+            cmd = new SqlCommand(sql, con.con);
+            SqlDataAdapter das = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dts = new DataTable();
+            da.Fill(dts);
+            cbQuarto.DataSource = dts;
+            cbServico.ValueMember = "id";
+            cbServico.DisplayMember = "Descricao";
+            con.FecharCon();
+
         }
 
 
@@ -89,10 +102,7 @@ namespace SistemaHotel.Reservas
             FormatarDG();
         }
 
-
-     
-
-
+    
         private void habilitarCampos()
         {
             txtCpf.Enabled = true;
@@ -228,9 +238,9 @@ namespace SistemaHotel.Reservas
 
         private void verificarOcupacoes()
         {
-
             limparOcupacoes();
             string data;
+            bool ativo = true;
             con.AbrirCon();
 
 
@@ -249,12 +259,12 @@ namespace SistemaHotel.Reservas
                     
                     
                 }
-
                 
-                sql = "SELECT * FROM Estadia where DataEntrada = @data and QuartoNumero = @quarto";
+                sql = "SELECT * FROM Estadia where DataEntrada = @data and QuartoNumero = @quarto and @Ativo = ativo";
                 cmd = new SqlCommand(sql, con.con);
                 cmd.Parameters.AddWithValue("@data", Convert.ToDateTime(data));
                 cmd.Parameters.AddWithValue("@quarto", cbQuarto.Text);
+                cmd.Parameters.AddWithValue("@Ativo", ativo);
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
                 DataTable dt = new DataTable();
@@ -486,8 +496,7 @@ namespace SistemaHotel.Reservas
 
 
         private void FrmReservas_Load(object sender, EventArgs e)
-        {
-            
+        {            
             int mes = DateTime.Now.Month;
             cbMes.Text = mes.ToString();
             int ano = DateTime.Now.Year;
@@ -541,8 +550,7 @@ namespace SistemaHotel.Reservas
 
 
         private void verificarDias31()
-        {
-            
+        {            
             if (cbMes.Text == "01" || cbMes.Text == "1")
             {
                 panel31.Visible = true;
