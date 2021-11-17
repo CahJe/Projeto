@@ -70,8 +70,8 @@ namespace SistemaHotel
             SqlDataReader reader;
 
             con.AbrirCon();
-            cmdVerificar = new SqlCommand("SELECT * FROM usuarios where usuario = @usuario and senha = @senha", con.con);
-            cmdVerificar.Parameters.AddWithValue("@usuario", txtUsuario.Text);
+            cmdVerificar = new SqlCommand("SELECT * FROM Pessoa where CPF = @CPF and senha = @senha", con.con);
+            cmdVerificar.Parameters.AddWithValue("@CPF", txtUsuario.Text);
             cmdVerificar.Parameters.AddWithValue("@senha", txtSenha.Text);
             reader = cmdVerificar.ExecuteReader();
             

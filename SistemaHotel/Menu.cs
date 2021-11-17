@@ -327,14 +327,12 @@ namespace SistemaHotel
 
         private void NovoServiçoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reservas.FrmCheckIn form = new Reservas.FrmCheckIn();
-            form.Show();
+
         }
 
         private void CheckOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reservas.FrmCheckOut form = new Reservas.FrmCheckOut();
-            form.Show();
+
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -552,14 +550,10 @@ namespace SistemaHotel
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            Reservas.FrmCheckIn form = new Reservas.FrmCheckIn();
-            form.Show();
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            Reservas.FrmCheckOut form = new Reservas.FrmCheckOut();
-            form.Show();
         }
 
         private void Button7_Click(object sender, EventArgs e)
