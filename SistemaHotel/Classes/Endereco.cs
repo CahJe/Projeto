@@ -52,7 +52,7 @@ namespace SistemaHotel.Classes
                 cmd.Parameters.AddWithValue("@Rua", rua);
                 cmd.Parameters.AddWithValue("@Numero", numero);
 
-                id = cmd.ExecuteNonQuery();
+                id = Convert.ToInt32(cmd.ExecuteScalar()); 
                 con.FecharCon();
 
                 return Id;

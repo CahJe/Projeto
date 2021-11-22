@@ -37,7 +37,7 @@ namespace SistemaHotel.Classes
                 con.AbrirCon();
                 sql = "INSERT INTO cliente (PessoaId) VALUES (@PessoaId)";
                 cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@Cpf", pessoaId);
+                cmd.Parameters.AddWithValue("@PessoaId", pessoaId);
 
                 id = cmd.ExecuteNonQuery();
                 con.FecharCon();
@@ -50,15 +50,28 @@ namespace SistemaHotel.Classes
 
         public bool verificaExistencia(string Cpf)
         {
-            SqlCommand cmdVerificar;
+            //SqlCommand cmdVerificar;
 
-            cmdVerificar = new SqlCommand("SELECT * FROM Pessoa p JOIN Cliente c on c.PessoaId = p.Id WHERE p.cpf = @cpf", con.con);
-            cmdVerificar.Parameters.AddWithValue("@cpf", Cpf);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmdVerificar;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+            //cmdVerificar = new SqlCommand("SELECT * FROM Pessoa p JOIN Cliente c on c.PessoaId = p.Id WHERE p.cpf = @cpf", con.con);
+            //cmdVerificar.Parameters.AddWithValue("@cpf", Cpf);
+            //SqlDataAdapter da = new SqlDataAdapter();
+            //da.SelectCommand = cmdVerificar;
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //if (dt.Rows.Count > 0)
+            //{
+            //    return true;
+            //}
+
+            //return false;
+            con.AbrirCon();
+            sql = "SELECT * FROM Pessoa p JOIN Cliente c on c.PessoaId = p.Id WHERE p.cpf = @cpf";
+            cmd.Parameters.AddWithValue("@cpf", Cpf);
+            cmd = new SqlCommand(sql, con.con);
+            //SqlDataReader reader = cmd.ExecuteReader();
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
             {
                 return true;
             }
@@ -120,7 +133,7 @@ namespace SistemaHotel.Classes
             try
             {
                 con.AbrirCon();
-                sql = "SELECT p.id, convert(varchar, p.DataCriacao, 103) DataCriacao, p.CPF, p.Nome,p.Sexo, p.Telefone,p.DDD,p.Email, ed.Estado, ed.Cidade, ed.Rua, ed.Numero FROM Pessoa p (nolock) JOIN Cliente c (nolock) on c.PessoaId = p.Id JOIN Endereco ed (nolock)on p.EnderecoId = ed.Id Order by nome desc";
+                sql = "SELECT p.id, convert(varchar, p.DataCriacao, 103) DataCriacao, p.CPF, p.Nome,p.Sexo, p.Telefone,p.DDD,p.Email, ed.Estado, ed.Cidade, ed.Rua, ed.Numero FROM Pessoa p (nolock) JOIN Cliente c (nolock) on c.PessoaId = p.Id JOIN Endereco ed (nolock) on p.EnderecoId = ed.Id Order by nome desc";
                 cmd = new SqlCommand(sql, con.con);
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;

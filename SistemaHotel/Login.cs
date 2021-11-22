@@ -49,11 +49,11 @@ namespace SistemaHotel
 
         private void ChamarLogin()
         {
-            if (txtUsuario.Text.ToString().Trim() == "")
+            if (txtCPF.Text.ToString().Trim() == "   .   .   -")
             {
                 MessageBox.Show("Preencha o Usuário", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtUsuario.Text = "";
-                txtUsuario.Focus();
+                txtCPF.Text = "";
+                txtCPF.Focus();
                 return;
             }
 
@@ -65,13 +65,15 @@ namespace SistemaHotel
                 return;
             }
 
+            string cpf = txtCPF.Text.Replace(".","").Replace("-","");
+
             //AQUI VAI O CÓDIGO PARA O LOGIN
             SqlCommand cmdVerificar;
             SqlDataReader reader;
 
             con.AbrirCon();
-            cmdVerificar = new SqlCommand("SELECT * FROM Pessoa where CPF = @CPF and senha = @senha", con.con);
-            cmdVerificar.Parameters.AddWithValue("@CPF", txtUsuario.Text);
+            cmdVerificar = new SqlCommand("SELECT * FROM Pessoa p JOIN Funcionario f on f.PessoaId = p.Id JOIN TipoFuncionario tf on tf.Id = f.TipoFuncionarioId where p.CPF = @CPF and p.senha = @senha", con.con);
+            cmdVerificar.Parameters.AddWithValue("@CPF", cpf);
             cmdVerificar.Parameters.AddWithValue("@senha", txtSenha.Text);
             reader = cmdVerificar.ExecuteReader();
             
@@ -81,9 +83,7 @@ namespace SistemaHotel
                 while (reader.Read())
                 {
                     Program.nomeUsuario = Convert.ToString(reader["nome"]);
-                    Program.cargoUsuario = Convert.ToString(reader["cargo"]);
-
-                    
+                    Program.cargoUsuario = Convert.ToString(reader["descricao"]);                   
                 }
 
                 MessageBox.Show("Bem Vindo! " + Program.nomeUsuario, "Login Efetuado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -95,8 +95,8 @@ namespace SistemaHotel
             else
             {
                 MessageBox.Show("Erro ao Logar!", "Dados Incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUsuario.Text = "";
-                txtUsuario.Focus();
+                txtCPF.Text = "";
+                txtCPF.Focus();
                 txtSenha.Text = "";
             }
 
@@ -106,9 +106,9 @@ namespace SistemaHotel
 
         private void Limpar()
         {
-            txtUsuario.Text = "";
+            txtCPF.Text = "";
             txtSenha.Text = "";
-            txtUsuario.Focus();
+            txtCPF.Focus();
         }
 
         private void FrmLogin_Resize(object sender, EventArgs e)

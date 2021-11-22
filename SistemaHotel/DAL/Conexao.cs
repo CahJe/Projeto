@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace SistemaHotel.DAL
 {
-    class Conexao
+    public class Conexao
     {
 
         //CONEXAO COM O BANCO DE DADOS LOCAL
-        public string conec = "SERVER=localhost; DATABASE=hotel; UID=root; PWD=; PORT=;";
+        public string conec = @"Data Source = DESKTOP-LFU4RFH\SQLEXPRESS;Initial Catalog = Hotel;Integrated Security = True";
         // "Data Source = DESKTOP - LFU4RFH\SQLEXPRESS;Initial Catalog = Projeto login;Integrated Security = True"
 
 

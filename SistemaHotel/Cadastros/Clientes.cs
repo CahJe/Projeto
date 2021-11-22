@@ -88,7 +88,11 @@ namespace SistemaHotel.Cadastros
             txtNome.Enabled = true;
             txtCPF.Enabled = true;
             txtEndereco.Enabled = true;
-            
+            txtNumero.Enabled = true;
+            txtCidade.Enabled = true;
+            cbEstado.Enabled = true;
+            txtEmail.Enabled = true;
+            cbSexo.Enabled = true;
             txtTelefone.Enabled = true;
             txtNome.Focus();
 
@@ -100,7 +104,11 @@ namespace SistemaHotel.Cadastros
             txtNome.Enabled = false;
             txtCPF.Enabled = false;
             txtEndereco.Enabled = false;
-            
+            cbSexo.Enabled = false;
+            cbEstado.Enabled = false;
+            txtEmail.Enabled = false;
+            txtNumero.Enabled = false;
+            txtCidade.Enabled = false;
             txtTelefone.Enabled = false;
         }
 
@@ -111,6 +119,11 @@ namespace SistemaHotel.Cadastros
             txtCPF.Text = "";
             txtEndereco.Text = "";
             txtTelefone.Text = "";
+            cbEstado.Text = "";
+            cbSexo.Text = "";
+            txtEmail.Text = "";
+            txtNumero.Text = "";
+            txtCidade.Text = "";
         }
 
 
@@ -120,6 +133,7 @@ namespace SistemaHotel.Cadastros
         {
             Listar();
             rbNome.Checked = true;
+            desabilitarCampos();
         }
 
         private void RbNome_CheckedChanged(object sender, EventArgs e)
@@ -147,6 +161,7 @@ namespace SistemaHotel.Cadastros
             btnNovo.Enabled = false;
             btnEditar.Enabled = false;
             btnExcluir.Enabled = false;
+
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -154,8 +169,8 @@ namespace SistemaHotel.Cadastros
             if (txtNome.Text.ToString().Trim() == "")
             {
                 txtNome.Text = "";
-                MessageBox.Show("Preencha o Nome", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Focus();
+                MessageBox.Show("Preencha o Nome", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -176,7 +191,9 @@ namespace SistemaHotel.Cadastros
 
             //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
 
-            if (cliente.verificaExistencia(txtCPF.Text))
+            var cpf = txtCPF.Text.Replace(".", "").Replace("-", "");
+
+            if (cliente.retornaId(cpf) > 0)
             {
                 MessageBox.Show("CPF já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCPF.Text = "";
@@ -187,7 +204,7 @@ namespace SistemaHotel.Cadastros
             //CÓDIGO DO BOTÃO PARA SALVAR    
 
             var enderecoId = endereco.inserir(cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
-            var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId);
+            var pessoaId = pessoa.inserir(cpf, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId);
             cliente.inserir(pessoaId);
         
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);

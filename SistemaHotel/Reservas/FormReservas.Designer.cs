@@ -114,6 +114,7 @@ namespace SistemaHotel.Reservas
             this.btnNovo.Size = new System.Drawing.Size(70, 65);
             this.btnNovo.TabIndex = 160;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // label3
             // 

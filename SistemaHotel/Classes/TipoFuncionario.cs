@@ -121,7 +121,7 @@ namespace SistemaHotel.Classes
                 con.AbrirCon();
                 sql = "DELETE FROM TipoFuncionario where id = @id";
                 cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@id", Id);
                 cmd.ExecuteNonQuery();
                 con.FecharCon();
             }

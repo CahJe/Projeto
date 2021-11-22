@@ -32,7 +32,7 @@
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtSenha = new System.Windows.Forms.TextBox();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,9 +40,9 @@
             // 
             this.pnlLogin.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogin.BackgroundImage")));
+            this.pnlLogin.Controls.Add(this.txtCPF);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.txtSenha);
-            this.pnlLogin.Controls.Add(this.txtUsuario);
             this.pnlLogin.Location = new System.Drawing.Point(180, 47);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(332, 340);
@@ -75,14 +75,15 @@
             this.txtSenha.Size = new System.Drawing.Size(220, 16);
             this.txtSenha.TabIndex = 2;
             // 
-            // txtUsuario
+            // txtCPF
             // 
-            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(71, 155);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(220, 16);
-            this.txtUsuario.TabIndex = 1;
+            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCPF.Enabled = false;
+            this.txtCPF.Location = new System.Drawing.Point(71, 160);
+            this.txtCPF.Mask = "000,000,000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(220, 13);
+            this.txtCPF.TabIndex = 4;
             // 
             // FrmLogin
             // 
@@ -110,9 +111,9 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlLogin;
-        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.MaskedTextBox txtCPF;
     }
 }
 

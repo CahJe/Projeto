@@ -315,7 +315,7 @@ namespace SistemaHotel
 
         private void NovaReservaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reservas.FrmReservas form = new Reservas.FrmReservas();
+            Reservas.FormReservas form = new Reservas.FormReservas();
             form.Show();
         }
 
@@ -544,7 +544,7 @@ namespace SistemaHotel
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            Reservas.FrmReservas form = new Reservas.FrmReservas();
+            Reservas.FormReservas form = new Reservas.FormReservas();
             form.Show();
         }
 

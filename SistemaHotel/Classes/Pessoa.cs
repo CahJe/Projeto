@@ -47,13 +47,14 @@ namespace SistemaHotel.Classes
             this.EnderecoId = enderecoId;
         }
 
-        public Pessoa() { }
+        
 
         Conexao con = new Conexao();
         string sql;
         SqlCommand cmd;
+        public Pessoa() { }
 
-        public int inserir(string cpf, string nome, string sexo, string telefone, string ddd, string email, int enderecoId, string senha = null)
+        public int inserir(string cpf, string nome, string sexo, string telefone, string ddd, string email, int enderecoId, string senha = "")
         {
             try
             {
@@ -69,7 +70,7 @@ namespace SistemaHotel.Classes
                 cmd.Parameters.AddWithValue("@Senha", senha);
                 cmd.Parameters.AddWithValue("@EnderecoId", enderecoId);
 
-                id = cmd.ExecuteNonQuery();
+                Id = Convert.ToInt32(cmd.ExecuteScalar());
                 con.FecharCon();
 
                 return Id;
@@ -109,7 +110,7 @@ namespace SistemaHotel.Classes
         public string retornaDDD(string telefone)
         {
             // Remove qualquer caracter que não seja numérico
-            var numero = Regex.Replace(telefone, "[^0-9]+$", "");
+            var numero = Regex.Replace(telefone, "[^0-9]+$", "").Replace("(", "").Replace(")", "").Replace("-", "");
             // Pega os 2 primeiros caracteres
             var ddd = numero.Substring(0, 2);
 
@@ -119,7 +120,7 @@ namespace SistemaHotel.Classes
         public string retornaTelefone(string telefone)
         {
             // Remove qualquer caracter que não seja numérico
-            var numero = Regex.Replace(telefone, "[^0-9]+$", "");
+            var numero = Regex.Replace(telefone, "[^0-9]+$", "").Replace("(","").Replace(")","").Replace("-","");
             // Pega os 2 primeiros caracteres
             var tel = numero.Substring(3, 9);
 

@@ -25,7 +25,6 @@ namespace SistemaHotel.Reservas
         {
             ListarQuartos();
             CarregaComboLista();
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -64,6 +63,16 @@ namespace SistemaHotel.Reservas
             grid.Columns[3].Visible = false;
 
             //grid.Columns[1].Width = 200;
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            btnSalvar.Enabled = true;
+            txtCpf.Enabled = true;
+            cbOcupantes.Enabled = true;
+            dtEntrada.Enabled = true;
+            dtSaida.Enabled = true;
+            clServicos.Enabled = true;            
         }
 
     }

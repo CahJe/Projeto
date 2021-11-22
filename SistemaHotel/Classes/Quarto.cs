@@ -118,7 +118,6 @@ namespace SistemaHotel.Classes
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Servidor SQL Erro: " + ex);
             }
         }
