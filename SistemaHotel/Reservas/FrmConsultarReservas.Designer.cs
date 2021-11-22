@@ -62,7 +62,7 @@
             // dtBuscarInicioReserva
             // 
             this.dtBuscarInicioReserva.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBuscarInicioReserva.Location = new System.Drawing.Point(598, 17);
+            this.dtBuscarInicioReserva.Location = new System.Drawing.Point(526, 16);
             this.dtBuscarInicioReserva.Name = "dtBuscarInicioReserva";
             this.dtBuscarInicioReserva.Size = new System.Drawing.Size(93, 20);
             this.dtBuscarInicioReserva.TabIndex = 122;
@@ -72,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(488, 22);
+            this.label3.Location = new System.Drawing.Point(416, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 121;
@@ -81,7 +81,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(222, 18);
+            this.label1.Location = new System.Drawing.Point(209, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 126;
@@ -110,7 +110,7 @@
             // 
             // txtBuscarNome
             // 
-            this.txtBuscarNome.Location = new System.Drawing.Point(267, 16);
+            this.txtBuscarNome.Location = new System.Drawing.Point(254, 17);
             this.txtBuscarNome.Name = "txtBuscarNome";
             this.txtBuscarNome.Size = new System.Drawing.Size(111, 20);
             this.txtBuscarNome.TabIndex = 129;
@@ -119,7 +119,7 @@
             // dtBuscarReserva
             // 
             this.dtBuscarReserva.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBuscarReserva.Location = new System.Drawing.Point(822, 17);
+            this.dtBuscarReserva.Location = new System.Drawing.Point(730, 17);
             this.dtBuscarReserva.Name = "dtBuscarReserva";
             this.dtBuscarReserva.Size = new System.Drawing.Size(93, 20);
             this.dtBuscarReserva.TabIndex = 131;
@@ -129,7 +129,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(740, 22);
+            this.label4.Location = new System.Drawing.Point(648, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 130;

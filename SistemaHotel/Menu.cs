@@ -48,126 +48,6 @@ namespace SistemaHotel
             InitializeComponent();
         }
 
-
-
-
-        private void FormatarDGCheckIn()
-        {
-            //grid.Columns[0].HeaderText = "ID";
-            //grid.Columns[1].HeaderText = "Quarto";
-            //grid.Columns[2].HeaderText = "Data Entrada";
-            //grid.Columns[3].HeaderText = "Data Saída";
-            //grid.Columns[4].HeaderText = "Dias";
-            //grid.Columns[5].HeaderText = "Valor";
-            //grid.Columns[6].HeaderText = "Nome";
-            //grid.Columns[7].HeaderText = "Telefone";
-            //grid.Columns[8].HeaderText = "Data";
-            //grid.Columns[9].HeaderText = "Funcionario";
-            //grid.Columns[10].HeaderText = "Status";
-            //grid.Columns[11].HeaderText = "Check-In";
-
-            //grid.Columns[12].HeaderText = "Check-Out";
-            //grid.Columns[13].HeaderText = "Pago";
-
-            //grid.Columns[0].Visible = false;
-
-            
-            //grid.Columns[5].Visible = false;
-            //grid.Columns[8].Visible = false;
-            //grid.Columns[9].Visible = false;
-            //grid.Columns[10].Visible = false;
-            //grid.Columns[12].Visible = false;
-            
-
-            //grid.Columns[1].Width = 60;
-            //grid.Columns[4].Width = 60;
-            //grid.Columns[11].Width = 60;
-            //grid.Columns[12].Width = 60;
-            //grid.Columns[13].Width = 60;
-        }
-
-        private void ListarCheckIn()
-        {
-
-            //con.AbrirCon();
-            //sql = "SELECT * FROM reservas where entrada = curDate() and status = @status and checkin = @checkin order by quarto asc";
-            //cmd = new SqlCommand(sql, con.con);
-           
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //cmd.Parameters.AddWithValue("@checkin", "Não");
-
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //grid.DataSource = dt;
-            //con.FecharCon();
-
-            //FormatarDGCheckIn();
-        }
-
-
-
-
-        private void FormatarDGCheckOut()
-        {
-            //grid2.Columns[0].HeaderText = "ID";
-            //grid2.Columns[1].HeaderText = "Quarto";
-            //grid2.Columns[2].HeaderText = "Data Entrada";
-            //grid2.Columns[3].HeaderText = "Data Saída";
-            //grid2.Columns[4].HeaderText = "Dias";
-            //grid2.Columns[5].HeaderText = "Valor";
-            //grid2.Columns[6].HeaderText = "Nome";
-            //grid2.Columns[7].HeaderText = "Telefone";
-            //grid2.Columns[8].HeaderText = "Data";
-            //grid2.Columns[9].HeaderText = "Funcionario";
-            //grid2.Columns[10].HeaderText = "Status";
-            //grid2.Columns[11].HeaderText = "Check-In";
-
-            //grid2.Columns[12].HeaderText = "Check-Out";
-            //grid2.Columns[13].HeaderText = "Pago";
-
-            //grid2.Columns[0].Visible = false;
-
-
-            //grid2.Columns[5].Visible = false;
-            //grid2.Columns[8].Visible = false;
-            //grid2.Columns[9].Visible = false;
-            //grid2.Columns[10].Visible = false;
-            //grid2.Columns[11].Visible = false;
-           
-
-            //grid2.Columns[1].Width = 60;
-            //grid2.Columns[4].Width = 60;
-            //grid2.Columns[11].Width = 60;
-            //grid2.Columns[12].Width = 60;
-            //grid2.Columns[13].Width = 60;
-        }
-
-        private void ListarCheckOut()
-        {
-
-            //con.AbrirCon();
-            //sql = "SELECT * FROM reservas where saida = curDate() and status = @status and checkout = @checkout order by quarto asc";
-            //cmd = new SqlCommand(sql, con.con);
-
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //cmd.Parameters.AddWithValue("@checkout", "Não");
-
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //grid2.DataSource = dt;
-            //con.FecharCon();
-
-            //FormatarDGCheckOut();
-        }
-
-
-
-
-
         private void FrmMenu_Resize(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -343,160 +223,94 @@ namespace SistemaHotel
 
         private void BuscarReservasDia()
         {
+            bool ativo = true;
+
             con.AbrirCon();
-            //sql = "SELECT * FROM reservas where data = @data and status = @status";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalReservasDia = dt.Rows.Count;
-            //lblTotalReservas.Text = totalReservasDia.ToString();
-            //con.FecharCon();
+            sql = "SELECT * FROM Estadia where DataEntrada = @data and Ativo = @status";
+            cmd = new SqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@data", DateTime.Today);
+            cmd.Parameters.AddWithValue("@status", ativo);
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            totalReservasDia = dt.Rows.Count;
+            lblTotalReservas.Text = totalReservasDia.ToString();
+            con.FecharCon();
         }
 
 
         private void BuscarQuartosDisponiveis()
         {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM ocupacoes where data = @data";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
-            
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalQuartosDisponiveis = dt.Rows.Count;
+            con.AbrirCon();
+            sql = "SELECT * FROM Estadia e JOIN Quarto q on e.QuartoNumero = q.Numero WHERE cast(e.DataEntrada as date) = @data";
+            cmd = new SqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@data", DateTime.Today);
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            totalQuartosDisponiveis = dt.Rows.Count;
 
 
             //BUSCAR TOTAL DE QUARTOS
-            //sql = "SELECT * FROM quartos";
-            //cmd = new SqlCommand(sql, con.con);
-            
-            //SqlDataAdapter da2 = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt2 = new DataTable();
-            //da.Fill(dt2);
-            //totalQuartos = dt2.Rows.Count;
-            //double total;
-            //total = totalQuartos - totalQuartosDisponiveis;
-            //lblQuartosDisponiveis.Text = total.ToString();
-            //con.FecharCon();
+            sql = "SELECT * FROM Quarto";
+            cmd = new SqlCommand(sql, con.con);
+
+            SqlDataAdapter da2 = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt2 = new DataTable();
+            da.Fill(dt2);
+            totalQuartos = dt2.Rows.Count;
+            double total;
+            total = totalQuartos - totalQuartosDisponiveis;
+            lblQuartosDisponiveis.Text = total.ToString();
+            con.FecharCon();
         }
 
 
         private void BuscarQuartosOcupados()
         {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM ocupacoes where data = @data";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
+            con.AbrirCon();
+            sql = "SELECT * FROM Estadia e JOIN Quarto q on e.QuartoNumero = q.Numero WHERE cast(e.DataEntrada as date) = @data";
+            cmd = new SqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@data", DateTime.Today);
 
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalQuartosOcupados = dt.Rows.Count;
-            //lblQuartosOcupados.Text = totalQuartosOcupados.ToString();
-            //con.FecharCon();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            totalQuartosOcupados = dt.Rows.Count;
+            lblQuartosOcupados.Text = totalQuartosOcupados.ToString();
+            con.FecharCon();
         }
 
 
         private void BuscarTotalCheckIn()
         {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM reservas where entrada = @data and status = @status";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalCheckIn = dt.Rows.Count;
-            //lblTotalCheckIn.Text = totalCheckIn.ToString();
-            //con.FecharCon();
+            
         }
 
 
         private void BuscarTotalCheckOut()
         {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM reservas where saida = @data and status = @status";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalCheckOut = dt.Rows.Count;
-            //lblTotalCheckOut.Text = totalCheckOut.ToString();
-            //con.FecharCon();
+            
         }
 
 
         private void BuscarTotalCheckInConfirmados()
         {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM reservas where entrada = @data and status = @status and checkin = @checkin";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //cmd.Parameters.AddWithValue("@checkin", "Sim");
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalCheckInConfirmados = dt.Rows.Count;
-            //lblCheckIn.Text = totalCheckInConfirmados.ToString();
-            //con.FecharCon();
+            
         }
 
         private void BuscarTotalCheckOutConfirmados()
         {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM reservas where saida = @data and status = @status and checkout = @checkout";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
-            //cmd.Parameters.AddWithValue("@status", "Confirmada");
-            //cmd.Parameters.AddWithValue("@checkout", "Sim");
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //totalCheckOutConfirmados = dt.Rows.Count;
-            //lblCheckOut.Text = totalCheckOutConfirmados.ToString();
-            //con.FecharCon();
-        }
-
-
-        private void VerificarEstoque()
-        {
-            //con.AbrirCon();
-            //sql = "SELECT * FROM produtos where estoque < @estoque";
-            //cmd = new SqlCommand(sql, con.con);
-            //cmd.Parameters.AddWithValue("@estoque", 15);
             
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //if (dt.Rows.Count > 0)
-            //{
-            //    lblEstoque.Text = "Estoque Baixo!";
-            //    imgEstoque.Image = Properties.Resources.baixo;
-            //}
-            //else
-            //{
-            //    lblEstoque.Text = "Estoque Bom!";
-            //    imgEstoque.Image = Properties.Resources.bom;
-            //}
-            //con.FecharCon();
         }
+
+
+       
 
 
 
@@ -511,14 +325,6 @@ namespace SistemaHotel
             BuscarReservasDia();
             BuscarQuartosDisponiveis();
             BuscarQuartosOcupados();
-            BuscarTotalCheckIn();
-            BuscarTotalCheckOut();
-            BuscarTotalCheckInConfirmados();
-            BuscarTotalCheckOutConfirmados();
-            VerificarEstoque();
-
-            ListarCheckOut();
-            ListarCheckIn();
         }
 
         private void EstoqueBaixoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -582,27 +388,7 @@ namespace SistemaHotel
             //valor = grid.CurrentRow.Cells[5].Value.ToString();
         }
 
-        private void BtnConfirmar_Click(object sender, EventArgs e)
-        {
-            if (pago == "Sim")
-            {
-                con.AbrirCon();
-                sql = "UPDATE reservas SET checkin = @checkin where id = @id";
-                cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@checkin", "Sim");
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                con.FecharCon();
-                ListarCheckIn();
-                //btnConfirmar.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Você precisa antes confirmar o pagamento!");
-                //btnConfirmar.Enabled = false;
-            }
-        }
-
+        
         private void Grid2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //btnConfirmar2.Enabled = true;
@@ -611,115 +397,46 @@ namespace SistemaHotel
 
         private void BtnConfirmar2_Click(object sender, EventArgs e)
         {
-            con.AbrirCon();
-            sql = "UPDATE reservas SET checkout = @checkout where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@checkout", "Sim");
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-            ListarCheckOut();
-            //btnConfirmar2.Enabled = false;
-
-
-            con.AbrirCon();
-            sql = "DELETE from ocupacoes where id_reserva = @id";
-            cmd = new SqlCommand(sql, con.con);
-
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
-
-            con.FecharCon();
         }
 
         private void BtnPago_Click(object sender, EventArgs e)
         {
-            con.AbrirCon();
-            sql = "UPDATE reservas SET pago = @pago where id = @id";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@pago", "Sim");
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
-            //SALVAR VALOR DA RESERVA NA TABELA DE MOVIMENTAÇÕES
-            con.AbrirCon();
-            sql = "INSERT INTO movimentacoes (tipo, movimento, valor, funcionario, data, id_movimento) VALUES (@tipo, @movimento, @valor, @funcionario, curDate(), @id_movimento)";
-            cmd = new SqlCommand(sql, con.con);
-
-            cmd.Parameters.AddWithValue("@tipo", "Entrada");
-            cmd.Parameters.AddWithValue("@movimento", "Reserva");
-            cmd.Parameters.AddWithValue("@valor", Convert.ToDouble(valor));
-            cmd.Parameters.AddWithValue("@funcionario", Program.nomeUsuario);
-            cmd.Parameters.AddWithValue("@id_movimento", id);
-
-
-            cmd.ExecuteNonQuery();
-            con.FecharCon();
-
-
-            MessageBox.Show("Lançamento de Valor Efetuado!", "Efetuado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ListarCheckIn();
-            //btnPago.Enabled = false;
+ 
         }
 
         private void LimparDadosMovimentaçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (backupFeito == "Sim")
-            {
-                var resultado = MessageBox.Show("Deseja limpar todas as movimentações de " + ano + " ?", "Limpar Registros", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado == DialogResult.Yes)
-                {
-                    //CÓDIGO DO BOTÃO PARA EXCLUIR
-                    con.AbrirCon();
-                    sql = "DELETE FROM movimentacoes where data >= @dataInicial and data <= @dataFinal";
-                    cmd = new SqlCommand(sql, con.con);
-                    cmd.Parameters.AddWithValue("@dataInicial", Convert.ToDateTime(dataInicial));
-                    cmd.Parameters.AddWithValue("@dataFinal", Convert.ToDateTime(dataFinal));
-                    cmd.ExecuteNonQuery();
-                    con.FecharCon();
-
-                    MessageBox.Show("Registro Excluido com Sucesso!", "Registro Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Faça antes o Backup!", "Registro não Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            backupFeito = "";
         }
 
         private void BackupDoBancoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            backup();
-            backupFeito = "Sim";
         }
 
         private void backup()
         {
-            string constring = con.conec;
+            //    string constring = con.conec;
 
-            // Important Additional Connection Options
-            constring += "charset=utf8;convertzerodatetime=true;";
-            string data = DateTime.Now.ToString("dd-MM-yyyy-HH-mm");
-            string file = "backup/backup-" + data + ".sql";
-            
-            using (SqlConnection conn = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    
-                        cmd.Connection = conn;
-                        conn.Open();
-                        //mb.ExportToFile(file);x
-                        conn.Close();
-                    
-                }
-            }
+            //    // Important Additional Connection Options
+            //    constring += "charset=utf8;convertzerodatetime=true;";
+            //    string data = DateTime.Now.ToString("dd-MM-yyyy-HH-mm");
+            //    string file = "backup/backup-" + data + ".sql";
+                
+            //    using (SqlConnection conn = new SqlConnection(constring))
+            //    {
+            //        using (SqlCommand cmd = new SqlCommand())
+            //        {
+                        
+            //                cmd.Connection = conn;
+            //                conn.Open();
+            //                //mb.ExportToFile(file);x
+            //                conn.Close();
+                        
+            //        }
+            //    }
 
-            MessageBox.Show("Backup Efetuado Data: " + data, "Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    MessageBox.Show("Backup Efetuado Data: " + data, "Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //
         }
 
         private void FrmMenu_Deactivate(object sender, EventArgs e)
@@ -772,29 +489,6 @@ namespace SistemaHotel
 
         private void LimparDadosReservasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(backupFeito == "Sim")
-            {
-                var resultado = MessageBox.Show("Deseja limpar todas as reservas de " + ano + " ?", "Limpar Registros", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado == DialogResult.Yes)
-                {
-                    //CÓDIGO DO BOTÃO PARA EXCLUIR
-                    con.AbrirCon();
-                    sql = "DELETE FROM reservas where entrada >= @entrada and saida <= @saida";
-                    cmd = new SqlCommand(sql, con.con);
-                    cmd.Parameters.AddWithValue("@entrada", Convert.ToDateTime(dataInicial));
-                    cmd.Parameters.AddWithValue("@saida", Convert.ToDateTime(dataFinal));
-                    cmd.ExecuteNonQuery();
-                    con.FecharCon();
-
-                    MessageBox.Show("Registro Excluido com Sucesso!", "Registro Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Faça antes o Backup!", "Registro não Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            backupFeito = "";
 
         }
     }

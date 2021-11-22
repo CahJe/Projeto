@@ -88,7 +88,7 @@ namespace SistemaHotel
 
                 MessageBox.Show("Bem Vindo! " + Program.nomeUsuario, "Login Efetuado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FrmMenu form = new FrmMenu();
-                //this.Hide();
+                this.Hide();
                 Limpar();
                 form.Show();
             }

@@ -23,6 +23,7 @@ namespace SistemaHotel.Reservas
 
         private void FormReservas_Load(object sender, EventArgs e)
         {
+            Desabilitar();
             ListarQuartos();
             CarregaComboLista();
         }
@@ -39,7 +40,6 @@ namespace SistemaHotel.Reservas
             clServicos.Items.Clear();
             var listaServico = servico.Lista();
             clServicos.Items.AddRange(listaServico.ToArray());
-
             
         }
 
@@ -75,5 +75,14 @@ namespace SistemaHotel.Reservas
             clServicos.Enabled = true;            
         }
 
+        private void Desabilitar()
+        {
+            btnSalvar.Enabled = false;
+            txtCpf.Enabled = false;
+            cbOcupantes.Enabled = false;
+            dtEntrada.Enabled = false;
+            dtSaida.Enabled = false;
+            clServicos.Enabled = false;
+        }
     }
 }

@@ -56,12 +56,13 @@ namespace SistemaHotel.Reservas
 
         private void ListarData()
         {
+            bool ativo = true;
 
             con.AbrirCon();
-            sql = "SELECT * FROM reservas where data = @data and status = @status order by data asc";
+            sql = "SELECT * FROM Estadia where DataEntrada = @data and Ativo = @status order by DataEntrada asc";
             cmd = new SqlCommand(sql, con.con);
             cmd.Parameters.AddWithValue("@data", Convert.ToDateTime(dtBuscarReserva.Text));
-            cmd.Parameters.AddWithValue("@status", cbStatus.Text);
+            cmd.Parameters.AddWithValue("@status", ativo);
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
             DataTable dt = new DataTable();

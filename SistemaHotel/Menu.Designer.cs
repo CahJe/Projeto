@@ -159,14 +159,14 @@
             // novaReservaToolStripMenuItem
             // 
             this.novaReservaToolStripMenuItem.Name = "novaReservaToolStripMenuItem";
-            this.novaReservaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.novaReservaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novaReservaToolStripMenuItem.Text = "Nova Reserva";
             this.novaReservaToolStripMenuItem.Click += new System.EventHandler(this.NovaReservaToolStripMenuItem_Click);
             // 
             // quadroDeReservasToolStripMenuItem
             // 
             this.quadroDeReservasToolStripMenuItem.Name = "quadroDeReservasToolStripMenuItem";
-            this.quadroDeReservasToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.quadroDeReservasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quadroDeReservasToolStripMenuItem.Text = "Consultar Reservas";
             this.quadroDeReservasToolStripMenuItem.Click += new System.EventHandler(this.QuadroDeReservasToolStripMenuItem_Click);
             // 
@@ -182,7 +182,7 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -385,9 +385,9 @@
             this.lblCargo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCargo.Location = new System.Drawing.Point(75, 225);
             this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(80, 18);
+            this.lblCargo.Size = new System.Drawing.Size(66, 18);
             this.lblCargo.TabIndex = 6;
-            this.lblCargo.Text = "13/04/2019";
+            this.lblCargo.Text = "Aleatório";
             // 
             // pictureBox2
             // 
@@ -567,7 +567,6 @@
             this.Name = "FrmMenu";
             this.Text = "Hotelaria ";
             this.Activated += new System.EventHandler(this.FrmMenu_Activated);
-            this.Deactivate += new System.EventHandler(this.FrmMenu_Deactivate);
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.Resize += new System.EventHandler(this.FrmMenu_Resize);
             this.menuStrip1.ResumeLayout(false);

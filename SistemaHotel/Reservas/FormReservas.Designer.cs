@@ -44,13 +44,15 @@ namespace SistemaHotel.Reservas
             this.label6 = new System.Windows.Forms.Label();
             this.clServicos = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCpf
             // 
             this.txtCpf.Enabled = false;
-            this.txtCpf.Location = new System.Drawing.Point(49, 41);
+            this.txtCpf.Location = new System.Drawing.Point(59, 36);
             this.txtCpf.Mask = "000,000,000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(112, 20);
@@ -59,7 +61,7 @@ namespace SistemaHotel.Reservas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 44);
+            this.label2.Location = new System.Drawing.Point(23, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 152;
@@ -119,7 +121,7 @@ namespace SistemaHotel.Reservas
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 44);
+            this.label3.Location = new System.Drawing.Point(443, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 161;
@@ -128,7 +130,7 @@ namespace SistemaHotel.Reservas
             // cbOcupantes
             // 
             this.cbOcupantes.FormattingEnabled = true;
-            this.cbOcupantes.Location = new System.Drawing.Point(293, 41);
+            this.cbOcupantes.Location = new System.Drawing.Point(526, 185);
             this.cbOcupantes.Name = "cbOcupantes";
             this.cbOcupantes.Size = new System.Drawing.Size(65, 21);
             this.cbOcupantes.TabIndex = 162;
@@ -136,7 +138,7 @@ namespace SistemaHotel.Reservas
             // dtEntrada
             // 
             this.dtEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtEntrada.Location = new System.Drawing.Point(97, 95);
+            this.dtEntrada.Location = new System.Drawing.Point(96, 159);
             this.dtEntrada.Name = "dtEntrada";
             this.dtEntrada.Size = new System.Drawing.Size(102, 20);
             this.dtEntrada.TabIndex = 163;
@@ -144,7 +146,7 @@ namespace SistemaHotel.Reservas
             // dtSaida
             // 
             this.dtSaida.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtSaida.Location = new System.Drawing.Point(293, 95);
+            this.dtSaida.Location = new System.Drawing.Point(293, 159);
             this.dtSaida.Name = "dtSaida";
             this.dtSaida.Size = new System.Drawing.Size(102, 20);
             this.dtSaida.TabIndex = 164;
@@ -152,7 +154,7 @@ namespace SistemaHotel.Reservas
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 98);
+            this.label5.Location = new System.Drawing.Point(6, 162);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 165;
@@ -161,7 +163,7 @@ namespace SistemaHotel.Reservas
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(207, 99);
+            this.label6.Location = new System.Drawing.Point(210, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 13);
             this.label6.TabIndex = 166;
@@ -170,7 +172,7 @@ namespace SistemaHotel.Reservas
             // clServicos
             // 
             this.clServicos.FormattingEnabled = true;
-            this.clServicos.Location = new System.Drawing.Point(412, 25);
+            this.clServicos.Location = new System.Drawing.Point(409, 25);
             this.clServicos.Name = "clServicos";
             this.clServicos.Size = new System.Drawing.Size(182, 154);
             this.clServicos.TabIndex = 167;
@@ -178,12 +180,30 @@ namespace SistemaHotel.Reservas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(409, 9);
+            this.label1.Location = new System.Drawing.Point(406, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 168;
             this.label1.Text = "Serviços desejados:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 132);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(329, 13);
+            this.label7.TabIndex = 169;
+            this.label7.Text = "Escolha o periodo de hospedagem para listar os quartos disponiveis.";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(188, 13);
+            this.label8.TabIndex = 170;
+            this.label8.Text = "Informe o CPF do cliente para reserva.";
             // 
             // FormReservas
             // 
@@ -191,6 +211,8 @@ namespace SistemaHotel.Reservas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(606, 411);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clServicos);
             this.Controls.Add(this.label6);
@@ -230,5 +252,7 @@ namespace SistemaHotel.Reservas
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckedListBox clServicos;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

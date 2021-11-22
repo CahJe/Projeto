@@ -151,12 +151,6 @@
     <Compile Include="Reservas\FrmConsultarReservas.Designer.cs">
       <DependentUpon>FrmConsultarReservas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reservas\FrmReservas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reservas\FrmReservas.Designer.cs">
-      <DependentUpon>FrmReservas.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Cadastros\Cargo.resx">
       <DependentUpon>Cargo.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,9 +187,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reservas\FrmConsultarReservas.resx">
       <DependentUpon>FrmConsultarReservas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reservas\FrmReservas.resx">
-      <DependentUpon>FrmReservas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
