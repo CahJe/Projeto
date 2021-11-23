@@ -105,7 +105,7 @@ namespace SistemaHotel.Classes
             try
             {
                 con.AbrirCon();
-                sql = "SELECT * FROM servicos order by Tipo asc";
+                sql = "SELECT * FROM servico order by Tipo asc";
                 cmd = new SqlCommand(sql, con.con);
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
@@ -130,7 +130,7 @@ namespace SistemaHotel.Classes
                 con.AbrirCon();
 
                 List<string> list = new List<string>();
-                sql = "SELECT * FROM servicos order by Tipo asc";
+                sql = "SELECT * FROM servico order by Tipo asc";
                 cmd = new SqlCommand(sql, con.con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 

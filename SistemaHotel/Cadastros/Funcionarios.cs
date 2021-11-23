@@ -39,7 +39,8 @@ namespace SistemaHotel.Cadastros
             var dt = tipoFuncionario.ListaTipo();
             cbCargo.DataSource = dt;
             cbCargo.ValueMember = "id";
-            cbCargo.DisplayMember = "descricao";            
+            cbCargo.DisplayMember = "descricao";
+            cbCargo.SelectedValue.ToString();
         }
 
 
@@ -207,22 +208,23 @@ namespace SistemaHotel.Cadastros
                 return;
             }
 
-
-            //CÓDIGO DO BOTÃO PARA SALVAR
-            var enderecoId = endereco.inserir(cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
-            var pessoaId = pessoa.inserir(txtCPF.Text, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId, txtConfirmaSenha.Text);
-            funcionario.inserir(int.Parse(cbCargo.ValueMember), pessoaId);
-
+            string cpf = txtCPF.Text.Replace(".","").Replace("-","");
 
             //VERIFICAR SE O CPF JÁ EXISTE NO BANCO
 
-            if (funcionario.verificaExistencia(txtCPF.Text))
+            if (funcionario.verificaExistencia(cpf))
             {
                 MessageBox.Show("CPF já Registrado!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCPF.Text = "";
                 txtCPF.Focus();
                 return;
             }
+
+            //CÓDIGO DO BOTÃO PARA SALVAR
+            var enderecoId = endereco.inserir(cbEstado.Text, txtCidade.Text, txtEndereco.Text, int.Parse(txtNumero.Text));
+            var pessoaId = pessoa.inserir(cpf, txtNome.Text, cbSexo.Text, pessoa.retornaTelefone(txtTelefone.Text), pessoa.retornaDDD(txtTelefone.Text), txtEmail.Text, enderecoId, txtConfirmaSenha.Text);
+            funcionario.inserir(int.Parse(cbCargo.SelectedValue.ToString()), pessoaId);
+
 
             MessageBox.Show("Registro Salvo com Sucesso!", "Dados Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNovo.Enabled = true;

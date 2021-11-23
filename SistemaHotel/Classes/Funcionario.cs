@@ -43,7 +43,7 @@ namespace SistemaHotel.Classes
                 con.AbrirCon();
                 sql = "INSERT INTO Funcionario (TipoFuncionarioId, PessoaId) VALUES (@TipoFuncionarioId, @PessoaId)";
                 cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@Cpf", pessoaId);
+                cmd.Parameters.AddWithValue("@PessoaId", pessoaId);
                 cmd.Parameters.AddWithValue("@TipoFuncionarioId", tipoFuncionarioId);
 
                 id = cmd.ExecuteNonQuery();

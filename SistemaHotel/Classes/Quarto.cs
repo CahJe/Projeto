@@ -34,6 +34,7 @@ namespace SistemaHotel.Classes
 
         public Quarto() { }
 
+        bool exite = false;
         Conexao con = new Conexao();
         string sql;
         SqlCommand cmd;
@@ -84,20 +85,20 @@ namespace SistemaHotel.Classes
 
         public bool verificaExistencia(int Numero)
         {
+            con.AbrirCon();
             SqlCommand cmdVerificar;
-
             cmdVerificar = new SqlCommand("SELECT * FROM Quarto WHERE Numero = @Numero", con.con);
             cmdVerificar.Parameters.AddWithValue("@Numero", Numero);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmdVerificar;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+
+            var reader = cmdVerificar.ExecuteReader();
+
+            while (reader.Read())
             {
-                return true;
+                exite = true;
             }
 
-            return false;
+            con.FecharCon();
+            return exite;
         }
 
         public DataTable ListaQuarto()

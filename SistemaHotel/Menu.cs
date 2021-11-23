@@ -344,13 +344,13 @@ namespace SistemaHotel
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Reservas.FrmConsultarReservas form = new Reservas.FrmConsultarReservas();
+            Reservas.FormReservas form = new Reservas.FormReservas();
             form.Show();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            Reservas.FormReservas form = new Reservas.FormReservas();
+            Reservas.FrmConsultarReservas form = new Reservas.FrmConsultarReservas();
             form.Show();
         }
 

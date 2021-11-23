@@ -25,7 +25,8 @@ namespace SistemaHotel
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-           
+            txtCPF.Focus();
+            txtCPF.Enabled = true;
             pnlLogin.Location = new Point(this.Width / 2 - 166, this.Height / 2 - 170);
             pnlLogin.Visible = true;
             btnLogin.FlatAppearance.MouseOverBackColor = Color.FromArgb(21, 114, 160);

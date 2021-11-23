@@ -145,7 +145,7 @@ namespace SistemaHotel.Reservas
 
         private void DtBuscarInicioReserva_ValueChanged(object sender, EventArgs e)
         {
-            ListarDataInicio();
+            //ListarDataInicio();
         }
 
         private void DtBuscarReserva_ValueChanged(object sender, EventArgs e)

@@ -805,7 +805,6 @@ C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\Sistema
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.Properties.Resources.resources
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.Reservas.FormReservas.resources
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.Reservas.FrmConsultarReservas.resources
-C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.Reservas.FrmReservas.resources
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.csproj.GenerateResource.cache
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.csproj.CoreCompileInputs.cache
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.csproj.CopyComplete

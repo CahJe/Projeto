@@ -108,7 +108,7 @@ namespace SistemaHotel.Cadastros
             }
 
             //CÓDIGO DO BOTÃO PARA SALVAR
-            var valor = txtValor.Text.Replace(".","").Replace(",", ".");
+            var valor = txtValor.Text.Replace(",", ".");
 
             servico.inserir(cbTipo.Text, txtDescricao.Text, Convert.ToDecimal(valor), cbAtivo.Checked);                
            
