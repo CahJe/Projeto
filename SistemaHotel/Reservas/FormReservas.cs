@@ -84,5 +84,28 @@ namespace SistemaHotel.Reservas
             dtSaida.Enabled = false;
             clServicos.Enabled = false;
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+
+         // obs. PARA MELHORIAS, QUERY SQL PARA VALIDAR QUARTOS DISPONIVEIS 
+         
+            //declare @datainicial date = '2021-11-26'
+            //declare @datafinal date = '2021-11-27'
+            
+            //; WITH Quartos_indisponiveis as (
+            //    SELECT q.*
+            //    FROM #Estadia e 
+            //	LEFT JOIN #Quarto q on e.QuartoNumero = q.Numero 
+            //	WHERE
+            //        (cast(e.DataEntrada as date) between @datainicial and @datafinal or
+            
+            //         cast(e.DataSaida as date) between @datainicial and @datafinal)
+            
+            //    AND e.Ativo = 1
+            //)
+            
+            //Select* from #Quarto where Numero not in (Select numero from Quartos_indisponiveis)
+        }
     }
 }
