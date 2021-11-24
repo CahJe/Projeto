@@ -810,3 +810,4 @@ C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\Sistema
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.csproj.CopyComplete
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.exe
 C:\Users\Pichau\Desktop\Projeto-main\Projeto-main\SistemaHotel\obj\Debug\SistemaHotel.pdb
+C:\Users\cfjsilva\Desktop\Projeto\SistemaHotel\obj\Debug\SistemaHotel.csprojAssemblyReference.cache

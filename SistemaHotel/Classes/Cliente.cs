@@ -14,6 +14,10 @@ namespace SistemaHotel.Classes
     {
         int id;
         int pessoaId;
+        Conexao con = new Conexao();
+        string sql;
+        SqlCommand cmd;
+
 
         public int PessoaId { get => pessoaId; set => pessoaId = value; }
         public int Id { get => id; set => id = value; }
@@ -26,10 +30,7 @@ namespace SistemaHotel.Classes
 
         public Cliente() { }
 
-        Conexao con = new Conexao();
-        string sql;
-        SqlCommand cmd;
-
+        
         public void inserir(int pessoaId)
         {
             try
@@ -162,6 +163,29 @@ namespace SistemaHotel.Classes
                 cmd.Parameters.AddWithValue("@Cpf", cpf);
 
                 PessoaId = cmd.ExecuteNonQuery();
+                con.FecharCon();
+
+                return PessoaId;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao inserir cliente na base -> Servidor SQL Erro: " + ex);
+            }
+
+
+        }
+
+        public int retornaclienteId(string cpf)
+        {
+
+            try
+            {
+                con.AbrirCon();
+                sql = "Select c.Id from Pessoa p join Cliente c on c.PessoaId = p.Id Where p.Cpf = @cpf";
+                cmd = new SqlCommand(sql, con.con);
+                cmd.Parameters.AddWithValue("@Cpf", cpf);
+
+                Id = cmd.ExecuteNonQuery();
                 con.FecharCon();
 
                 return PessoaId;

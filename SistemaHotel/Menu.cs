@@ -1,4 +1,5 @@
-﻿using SistemaHotel.DAL;
+﻿using SistemaHotel.Classes;
+using SistemaHotel.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,8 @@ namespace SistemaHotel
         string sql;
         SqlCommand cmd;
         string id;
-
+        Quarto quarto = new Quarto();
+            
         Int32 totalReservasDia;
         Int32 totalQuartosDisponiveis;
         Int32 totalQuartosOcupados;
@@ -242,31 +244,34 @@ namespace SistemaHotel
 
         private void BuscarQuartosDisponiveis()
         {
-            con.AbrirCon();
-            sql = "SELECT * FROM Estadia e JOIN Quarto q on e.QuartoNumero = q.Numero WHERE cast(e.DataEntrada as date) = @data";
-            cmd = new SqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@data", DateTime.Today);
+            var dt2 = quarto.ListaQuartoDisponivel(DateTime.Today, DateTime.Today);
 
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            totalQuartosDisponiveis = dt.Rows.Count;
+            //con.AbrirCon();
+            //sql = "SELECT * FROM Estadia e JOIN Quarto q on e.QuartoNumero = q.Numero WHERE cast(e.DataEntrada as date) = @data";
+            //cmd = new SqlCommand(sql, con.con);
+            //cmd.Parameters.AddWithValue("@data", DateTime.Today);
+
+            //SqlDataAdapter da = new SqlDataAdapter();
+            //da.SelectCommand = cmd;
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //totalQuartosDisponiveis = dt.Rows.Count;
 
 
-            //BUSCAR TOTAL DE QUARTOS
-            sql = "SELECT * FROM Quarto";
-            cmd = new SqlCommand(sql, con.con);
+            ////BUSCAR TOTAL DE QUARTOS
+            //sql = "SELECT * FROM Quarto";
+            //cmd = new SqlCommand(sql, con.con);
 
-            SqlDataAdapter da2 = new SqlDataAdapter();
-            da.SelectCommand = cmd;
-            DataTable dt2 = new DataTable();
-            da.Fill(dt2);
+            //SqlDataAdapter da2 = new SqlDataAdapter();
+            //da.SelectCommand = cmd;
+            //DataTable dt2 = new DataTable();
+            //da.Fill(dt2);
+
             totalQuartos = dt2.Rows.Count;
             double total;
-            total = totalQuartos - totalQuartosDisponiveis;
+            total = totalQuartos;
             lblQuartosDisponiveis.Text = total.ToString();
-            con.FecharCon();
+         
         }
 
 
@@ -307,11 +312,7 @@ namespace SistemaHotel
         private void BuscarTotalCheckOutConfirmados()
         {
             
-        }
-
-
-       
-
+        }    
 
 
         private void FrmMenu_Activated(object sender, EventArgs e)

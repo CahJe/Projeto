@@ -179,6 +179,7 @@
             this.grid.Size = new System.Drawing.Size(636, 154);
             this.grid.TabIndex = 60;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
+            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.Click += new System.EventHandler(this.Grid_Click);
             // 
             // txtBuscarCPF
@@ -189,6 +190,7 @@
             this.txtBuscarCPF.Size = new System.Drawing.Size(115, 20);
             this.txtBuscarCPF.TabIndex = 61;
             this.txtBuscarCPF.Visible = false;
+            this.txtBuscarCPF.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtBuscarCPF_MaskInputRejected);
             this.txtBuscarCPF.TextChanged += new System.EventHandler(this.TxtBuscarCPF_TextChanged);
             // 
             // rbNome

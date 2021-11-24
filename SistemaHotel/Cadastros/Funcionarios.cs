@@ -72,7 +72,6 @@ namespace SistemaHotel.Cadastros
 
             var dt = funcionario.ListaFuncionario();
             grid.DataSource = dt;
-
             FormatarDG();
         }
 
@@ -358,6 +357,16 @@ namespace SistemaHotel.Cadastros
         }
 
         private void cbCargo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtBuscarCPF_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

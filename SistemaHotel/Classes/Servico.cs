@@ -123,23 +123,48 @@ namespace SistemaHotel.Classes
             }
         }
 
-        public List<String> Lista()
+        //public List<String> Lista()
+        //{
+        //    try
+        //    {
+        //        con.AbrirCon();
+
+        //        List<string> list = new List<string>();
+        //        sql = "SELECT * FROM servico order by 1 asc";
+        //        cmd = new SqlCommand(sql, con.con);
+        //        SqlDataReader reader = cmd.ExecuteReader();
+                
+        //        while (reader.Read())
+        //        {
+        //            list[0] = reader[0].ToString();
+        //        }
+
+        //        return list;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw new Exception("Servidor SQL Erro: " + ex);
+        //    }
+        //}
+
+
+        public DataTable listaServico()
         {
             try
             {
+
                 con.AbrirCon();
-
-                List<string> list = new List<string>();
-                sql = "SELECT * FROM servico order by Tipo asc";
+                sql = "SELECT * FROM servico order by 1 asc";
                 cmd = new SqlCommand(sql, con.con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                
-                while (reader.Read())
-                {
-                    list[0] = reader[0].ToString();
-                }
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                con.FecharCon();
 
-                return list;
+                return dt;
+
             }
             catch (Exception ex)
             {
@@ -147,7 +172,6 @@ namespace SistemaHotel.Classes
                 throw new Exception("Servidor SQL Erro: " + ex);
             }
         }
-
 
         public void deletar(int id)
         {

@@ -205,6 +205,10 @@ ALTER TABLE ServicoPrestado ADD CONSTRAINT FK_ServicoPrestado_Estadia
     FOREIGN KEY (EstadiaId)
     REFERENCES Estadia (Id)
 
+
+INSERT INTO TipoFuncionario (descricao) VALUES ('Administrador')
+INSERT INTO TipoFuncionario (descricao) VALUES ('Assistente')
+
 	--ROLL BACK DAS TABELAS E DO DATABASE
 
 	/*ALTER TABLE Cliente DROP CONSTRAINT [FK_Cliente]

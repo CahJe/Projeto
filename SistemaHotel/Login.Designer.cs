@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtSenha = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.lkcadastro = new System.Windows.Forms.LinkLabel();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +41,7 @@
             // 
             this.pnlLogin.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogin.BackgroundImage")));
+            this.pnlLogin.Controls.Add(this.lkcadastro);
             this.pnlLogin.Controls.Add(this.txtCPF);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.txtSenha);
@@ -47,6 +49,16 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(332, 340);
             this.pnlLogin.TabIndex = 0;
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCPF.Enabled = false;
+            this.txtCPF.Location = new System.Drawing.Point(71, 160);
+            this.txtCPF.Mask = "000,000,000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(220, 13);
+            this.txtCPF.TabIndex = 1;
             // 
             // btnLogin
             // 
@@ -75,15 +87,16 @@
             this.txtSenha.Size = new System.Drawing.Size(220, 16);
             this.txtSenha.TabIndex = 2;
             // 
-            // txtCPF
+            // lkcadastro
             // 
-            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCPF.Enabled = false;
-            this.txtCPF.Location = new System.Drawing.Point(71, 160);
-            this.txtCPF.Mask = "000,000,000-00";
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(220, 13);
-            this.txtCPF.TabIndex = 4;
+            this.lkcadastro.AutoSize = true;
+            this.lkcadastro.Location = new System.Drawing.Point(117, 312);
+            this.lkcadastro.Name = "lkcadastro";
+            this.lkcadastro.Size = new System.Drawing.Size(107, 13);
+            this.lkcadastro.TabIndex = 1;
+            this.lkcadastro.TabStop = true;
+            this.lkcadastro.Text = "Cadastrar funcionário";
+            this.lkcadastro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkcadastro_LinkClicked);
             // 
             // FrmLogin
             // 
@@ -114,6 +127,7 @@
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.MaskedTextBox txtCPF;
+        private System.Windows.Forms.LinkLabel lkcadastro;
     }
 }
 

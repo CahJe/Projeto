@@ -123,6 +123,40 @@ namespace SistemaHotel.Classes
             }
         }
 
+        public DataTable ListaQuartoDisponivel(DateTime datainicial, DateTime datafinal)
+        {
+            try
+            {
+                con.AbrirCon();
+                sql = @" 
+                   ;WITH Quartos_indisponiveis as ( 
+                        SELECT q.*
+                        FROM Estadia e
+                        LEFT JOIN Quarto q on e.QuartoNumero = q.Numero
+                    WHERE
+                        (cast(e.DataEntrada as date) between @datainicial and @datafinal or
+                         cast(e.DataSaida as date) between @datainicial and @datafinal)
+                    AND e.Ativo = 1
+                    )                
+                    Select * from Quarto where Numero not in (Select numero from Quartos_indisponiveis)";
+                cmd.Parameters.AddWithValue("@datainicial", datainicial.Date);
+                cmd.Parameters.AddWithValue("@datafinal", datafinal.Date);
+                cmd = new SqlCommand(sql, con.con);
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                con.FecharCon();
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Servidor SQL Erro: " + ex);
+            }
+        }
+
         public void deletar(int numero)
         {
             try

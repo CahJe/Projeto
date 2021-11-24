@@ -116,5 +116,11 @@ namespace SistemaHotel
         {
             pnlLogin.Location = new Point(this.Width / 2 - 166, this.Height / 2 - 170);
         }
+
+        private void lkcadastro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Cadastros.FrmFuncionarios form = new Cadastros.FrmFuncionarios();
+            form.Show();
+        }
     }
 }
