@@ -74,6 +74,8 @@ namespace SistemaHotel.Reservas
             this.grid.AllowUserToDeleteRows = false;
             this.grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
+            this.txtCpf.TextChanged += new System.EventHandler(this.txtCpf_TextChanged);
             this.grid.GridColor = System.Drawing.SystemColors.Control;
             this.grid.Location = new System.Drawing.Point(10, 221);
             this.grid.Name = "grid";

@@ -36,7 +36,7 @@ namespace SistemaHotel.Reservas
 
         private void txtCpf_TextChanged(object sender, EventArgs e)
         {
-            string cpf = txtCpf.Text.Replace("", "").Replace("", "");
+            string cpf = txtCpf.Text.Replace(".", "").Replace("-", "");
             var qtdcpf = cpf.Length;
 
             if (qtdcpf >= 11)
@@ -64,7 +64,7 @@ namespace SistemaHotel.Reservas
             var dt = servico.listaServico();
             //clServicos.Items.AddRange();
 
-            cbServico.Items.Clear();
+            //cbServico.Items.Clear();
             cbServico.DataSource = dt;
             cbServico.ValueMember = "id";
             cbServico.DisplayMember = "Tipo";

@@ -39,15 +39,15 @@ namespace SistemaHotel.Reservas
             grid.Columns[5].HeaderText = "DataSaida";
             grid.Columns[6].HeaderText = "DataCancelamento";
             grid.Columns[7].HeaderText = "Status";
-            grid.Columns[8].HeaderText = "Cliete";
+            grid.Columns[8].HeaderText = "Cliente";
                         
             grid.Columns[0].Visible = false;
 
             grid.Columns[1].Width = 60;
             grid.Columns[4].Width = 60;
-            grid.Columns[11].Width = 60;
-            grid.Columns[12].Width = 60;
-            grid.Columns[13].Width = 60;
+            //grid.Columns[11].Width = 60;
+            //grid.Columns[12].Width = 60;
+            //grid.Columns[13].Width = 60;
         }
 
         private void ListarData()
@@ -138,7 +138,7 @@ namespace SistemaHotel.Reservas
                 con.AbrirCon();
                 sql = "UPDATE Estadia SET Ativo = @ativo, DataCancelamento = @data where id = @id";
                 cmd = new SqlCommand(sql, con.con);
-                cmd.Parameters.AddWithValue("@status", ativo);
+                cmd.Parameters.AddWithValue("@ativo", ativo);
                 cmd.Parameters.AddWithValue("@data", DateTime.Today);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();

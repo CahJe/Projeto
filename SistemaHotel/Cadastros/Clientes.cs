@@ -48,7 +48,7 @@ namespace SistemaHotel.Cadastros
             grid.Columns[8].HeaderText = "Estado";
             grid.Columns[9].HeaderText = "Cidade";
             grid.Columns[10].HeaderText = "Rua";
-            grid.Columns[11].HeaderText = "Numero";
+            //grid.Columns[11].HeaderText = "Numero";
 
             grid.Columns[0].Visible = false;
             //grid.Columns[5].Visible = false;
@@ -67,7 +67,7 @@ namespace SistemaHotel.Cadastros
 
         private void BuscarNome()
         {
-            var dt = cliente.buscaCPF(txtBuscarNome.Text);
+            var dt = cliente.buscaNome(txtBuscarNome.Text);
             grid.DataSource = dt;
             con.FecharCon();
 
@@ -77,7 +77,8 @@ namespace SistemaHotel.Cadastros
 
         private void BuscarCPF()
         {
-            var dt = cliente.buscaCPF(txtBuscarCPF.Text);         
+            string cpf = txtBuscarCPF.Text.Replace("-", "").Replace(".", "");
+            var dt = cliente.buscaCPF(cpf);         
             grid.DataSource = dt;           
             FormatarDG();
         }

@@ -67,8 +67,8 @@ namespace SistemaHotel.Classes
             //return false;
             con.AbrirCon();
             sql = "SELECT * FROM Pessoa p JOIN Cliente c on c.PessoaId = p.Id WHERE p.cpf = @cpf";
-            cmd.Parameters.AddWithValue("@cpf", Cpf);
             cmd = new SqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@cpf", Cpf);
             //SqlDataReader reader = cmd.ExecuteReader();
             var reader = cmd.ExecuteReader();
 
@@ -180,15 +180,16 @@ namespace SistemaHotel.Classes
 
             try
             {
+                int IdCliente;
                 con.AbrirCon();
                 sql = "Select c.Id from Pessoa p join Cliente c on c.PessoaId = p.Id Where p.Cpf = @cpf";
                 cmd = new SqlCommand(sql, con.con);
                 cmd.Parameters.AddWithValue("@Cpf", cpf);
 
-                Id = cmd.ExecuteNonQuery();
+                IdCliente = Convert.ToInt32(cmd.ExecuteScalar());
                 con.FecharCon();
 
-                return PessoaId;
+                return IdCliente;
             }
             catch (Exception ex)
             {

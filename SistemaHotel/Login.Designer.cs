@@ -33,7 +33,7 @@
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtSenha = new System.Windows.Forms.TextBox();
-            this.lkcadastro = new System.Windows.Forms.LinkLabel();
+            this.btnFuncionario = new System.Windows.Forms.Button();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +41,7 @@
             // 
             this.pnlLogin.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogin.BackgroundImage")));
-            this.pnlLogin.Controls.Add(this.lkcadastro);
+            this.pnlLogin.Controls.Add(this.btnFuncionario);
             this.pnlLogin.Controls.Add(this.txtCPF);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.txtSenha);
@@ -87,16 +87,15 @@
             this.txtSenha.Size = new System.Drawing.Size(220, 16);
             this.txtSenha.TabIndex = 2;
             // 
-            // lkcadastro
+            // btnFuncionario
             // 
-            this.lkcadastro.AutoSize = true;
-            this.lkcadastro.Location = new System.Drawing.Point(117, 312);
-            this.lkcadastro.Name = "lkcadastro";
-            this.lkcadastro.Size = new System.Drawing.Size(107, 13);
-            this.lkcadastro.TabIndex = 1;
-            this.lkcadastro.TabStop = true;
-            this.lkcadastro.Text = "Cadastrar funcionário";
-            this.lkcadastro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkcadastro_LinkClicked);
+            this.btnFuncionario.Location = new System.Drawing.Point(106, 304);
+            this.btnFuncionario.Name = "btnFuncionario";
+            this.btnFuncionario.Size = new System.Drawing.Size(133, 23);
+            this.btnFuncionario.TabIndex = 4;
+            this.btnFuncionario.Text = "Cadastrar funcionario";
+            this.btnFuncionario.UseVisualStyleBackColor = true;
+            this.btnFuncionario.Click += new System.EventHandler(this.btnFuncionario_Click);
             // 
             // FrmLogin
             // 
@@ -127,7 +126,7 @@
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.MaskedTextBox txtCPF;
-        private System.Windows.Forms.LinkLabel lkcadastro;
+        private System.Windows.Forms.Button btnFuncionario;
     }
 }
 

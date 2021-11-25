@@ -119,6 +119,12 @@ namespace SistemaHotel
 
         private void lkcadastro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //Cadastros.FrmFuncionarios form = new Cadastros.FrmFuncionarios();
+            //form.Show();
+        }
+
+        private void btnFuncionario_Click(object sender, EventArgs e)
+        {
             Cadastros.FrmFuncionarios form = new Cadastros.FrmFuncionarios();
             form.Show();
         }

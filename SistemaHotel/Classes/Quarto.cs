@@ -129,6 +129,7 @@ namespace SistemaHotel.Classes
             {
                 con.AbrirCon();
                 sql = @" 
+
                    ;WITH Quartos_indisponiveis as ( 
                         SELECT q.*
                         FROM Estadia e
@@ -139,9 +140,9 @@ namespace SistemaHotel.Classes
                     AND e.Ativo = 1
                     )                
                     Select * from Quarto where Numero not in (Select numero from Quartos_indisponiveis)";
+                cmd = new SqlCommand(sql, con.con);
                 cmd.Parameters.AddWithValue("@datainicial", datainicial.Date);
                 cmd.Parameters.AddWithValue("@datafinal", datafinal.Date);
-                cmd = new SqlCommand(sql, con.con);
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
                 DataTable dt = new DataTable();

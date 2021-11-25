@@ -59,10 +59,10 @@ namespace SistemaHotel.Cadastros
             grid.Columns[10].HeaderText = "Cidade";
             grid.Columns[11].HeaderText = "Rua";
             grid.Columns[12].HeaderText = "Numero";
-            grid.Columns[13].HeaderText = "Senha";
+            //grid.Columns[13].HeaderText = "Senha";
 
             grid.Columns[0].Visible = false;
-            grid.Columns[13].Visible = false;
+            //grid.Columns[13].Visible = false;
 
             //grid.Columns[1].Width = 200;
         }
